@@ -1,11 +1,186 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Aplicação Flask</title>
-</head>
-<body>
-    <h1>Bem-vindo à minha aplicação Flask!</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %} Integração dos bixos 2025-1 {% endblock %}
+
+{% block content %}
+
+    <section id="index">
+        <div class="d-flex flex-column align-items-center justify-content-end" style="height: 65vh;">
+            <div class="aba-bg"><div></div></div>
+            <div class="d-flex flex-column align-items-center justify-content-end p-0 aba-index">
+                <img src="../static/assets/img/logo-atletica-fundo-transparente.png" alt="Logo da Atlética Guará" style="width: 65vw; max-width: 400px; position: relative;">
+            </div>
+        </div>
+
+        <div class="d-flex flex-column align-items-center z-5">
+            <h1 class="text-light mt-3">Bem vindo!</h1>
+            <p class="text-light">Integração dos Bixos | 2025-1</p>
+            <button class="btn btn-lg btn-primary" style="position: absolute; bottom: 10%; height: 3em; width: 3em;" id="scroll-to-main">
+                <i class="bi bi-arrow-down"></i>
+            </button>
+        </div>
+    </section>
+
+    <section id="main" class="">
+        <div class="d-flex justify-content-center align-items-center py-5 px-3">
+            <div class="col-12 col-md-10 col-lg-8 card bg-dark text-light p-3 rounded-5 m-auto">
+                <div class="header rounded-4 p-3 mb-5">
+                    <h1 class="fun-font text-center m-auto">
+                        Integração <br class="d-md-none"><span class="fun-font fs-5 mb-3">dos</span> Bixos
+                    </h1>
+                    <p class="text-center m-0">Fatec Campinas | 2025-1</p>
+                </div>
+
+                <div class="recepcao">
+                    <h3>Olá, que bom te ver por aqui!</h3>
+                    <p>Calouro, a integração na faculdade é o momento onde tudo pode parecer um pouco confuso e assustador. Estamos aqui para te ajudar a se familiarizar com os recursos, dificuldades e oportunidades desta nova etapa.</p>
+                    <p>As atividades de integração são uma ótima oportunidade para criar laços e entender melhor como funciona a vida acadêmica na sua nova casa. Aproveite esse momento para tirar suas dúvidas e se divertir. Estamos felizes em ter sua companhia!</p>
+                    <hr>
+                    
+                    <div class="d-flex flex-column gap-3">
+                        <div class="btn btn-lg btn-primary d-flex justify-content-center py-3 gap-2" id="adocao-btn">
+                            <i class="bi bi-people-fill"></i>Adoção de bixos
+                        </div>
+                        <div class="btn btn-lg btn-primary d-flex justify-content-center py-3 gap-2" id="manual-btn">
+                            <i class="bi bi-journal-text"></i>Manual dos Bixos
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-center text-secondary m-4 mb-0">Fatec Campinas | 2025-1</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="acesso-manual" class="hidden">
+        <div class="d-flex justify-content-center align-items-center py-5 px-3">
+            <div class="col-12 col-md-10 col-lg-8 card bg-dark text-light p-3 rounded-5 m-auto">
+                <h1 class="fun-font text-center my-3">Manual dos bixos</h1>
+                <p>Conteúdo preparado por veteranos com tudo que um calouro precisa saber.</p>
+                <p>Para acessar o manual, é necessário já ter feito o cadastro de pedido de adoção.</p>
+                <p>Use o mesmo e-mail cadastrado para acessar o Manual ou <a id="link-inscricao" href="" style="color: var(--bg-light);">faça aqui sua inscrição.</a></p>
+                
+                <div class="text-center">
+                    <h4 class="m-2">Eu sou...</h4>
+                    <button class="btn btn-lg btn-primary px-4 m-1 mt-0 btn-tipo-aluno" id="btn-calouro">Calouro</button>
+                    <button class="btn btn-lg btn-primary px-4 m-1 mt-0 btn-tipo-aluno" id="btn-veterano">Veterano</button>
+                    <input id="tipo-aluno" value="0" hidden>
+                </div>
+
+                <div style="overflow: hidden;" class="hidden" id="form-email">
+                    <hr>
+                    <div class="form-group col-12 col-md-8 m-auto">
+                        <label class="m-1">E-mail</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="example.email@gmail.com">
+                        <span class="text-danger hidden"></span>
+                    </div>
+                    <div class="d-flex justify-content-center my-3">
+                        <button id="btn-acessar-manual"><span>Acessar</span></button>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-start mt-5 link-index">
+                    <button class="btn btn-secondary">
+                        <i class="bi bi-caret-left-fill me-2"></i>Voltar
+                    </button>
+                </div>
+
+                <p class="text-center text-secondary m-4 mb-0">Fatec Campinas | 2025-1</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projeto-adocao" class="hidden">
+        <div class="d-flex justify-content-center align-items-center py-5 px-3">
+            <div class="col-12 col-md-10 col-lg-8 card bg-dark text-light p-3 rounded-5 m-auto">
+                <h1 class="fun-font text-center my-3">Projeto de adoção</h1>
+                <p>Consiste em associar cada calouro a um veterano de mesmo curso para apoio direto.</p>
+                <p>Uma ótima oportunidade para ter ajuda e criar novos laços. Participe!</p>
+                
+                <div class="d-flex justify-content-center mt-5">
+                    <a class="btn btn-lg btn-primary" href="{{ url_for('main.form') }}">
+                        <i class="bi bi-person-fill-add me-2"></i>Fazer minha inscrição
+                    </a>
+                </div>
+
+                <div class="d-flex justify-content-start mt-5 link-index">
+                    <button class="btn btn-secondary">
+                        <i class="bi bi-caret-left-fill me-2"></i>Voltar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section id="form-calouros" class="form-section hidden">
+        <div class="d-flex align-items-center gap-3 bg-dark p-3 pt-4 text-light" style="height: 5em;">
+            <button class="btn btn-primary link-adocao">
+                <i class="bi bi-caret-left-fill"></i>
+            </button>
+            <h4 class="m-0">Projeto de adoção</h4>
+        </div>
+
+        <div class="embedded-form">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdJ_BPJ_V24M-ZBjKYZKjgMkKibjE0D3u29-k9ZbbN7rmcXhA/viewform?embedded=true" frameborder="0" marginheight="2em" marginwidth="8px" height="700">Carregando…</iframe>
+        </div>
+    </section>
+
+    <section id="form-veteranos" class="form-section hidden">
+        <div class="d-flex align-items-center gap-3 bg-dark p-3 pt-4 text-light" style="height: 5em;">
+            <button class="btn btn-primary link-adocao">
+                <i class="bi bi-caret-left-fill"></i>
+            </button>
+            <h4 class="m-0">Projeto de adoção</h4>
+        </div>
+
+        <div class="embedded-form">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeFb9W5pILw18hdzY65UaaDDYpeh7f2mjvM-pG1IF7Oka-5Eg/viewform?embedded=true" width="640" height="2551" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+        </div>
+    </section> -->
+
+    <div class="justify-content-center gap-3 hidden">
+        <span class="col-5 col-md-4 bg-light p-3 d-flex align-items-center rounded-circle">
+            <img src="../static/assets/img/fatec_ra_campinas_campinas_cor.png" alt="Logo da Fatec Campinas" id="logo-fatec">
+        </span>
+        <img src="../static/assets/img/logo-atletica.jpg" alt="Logo da Atlética Guará" class="col-5 col-md-4" id="logo-atletica">
+    </div>
+    
+    <svg preserveAspectRatio="xMidYMid slice" viewBox="10 10 80 80">
+        <path fill="#444444" class="out-top" d="M37-5C25.1-14.7,5.7-19.1-9.2-10-28.5,1.8-32.7,31.1-19.8,49c15.5,21.5,52.6,22,67.2,2.3C59.4,35,53.7,8.5,37-5Z"/>
+        <path fill="#5c5c5c" class="in-top" d="M20.6,4.1C11.6,1.5-1.9,2.5-8,11.2-16.3,23.1-8.2,45.6,7.4,50S42.1,38.9,41,24.5C40.2,14.1,29.4,6.6,20.6,4.1Z"/>
+        <path fill="#242424" class="out-bottom" d="M105.9,48.6c-12.4-8.2-29.3-4.8-39.4.8-23.4,12.8-37.7,51.9-19.1,74.1s63.9,15.3,76-5.6c7.6-13.3,1.8-31.1-2.3-43.8C117.6,63.3,114.7,54.3,105.9,48.6Z"/>
+        <path fill="#1a1a1a" class="in-bottom" d="M102,67.1c-9.6-6.1-22-3.1-29.5,2-15.4,10.7-19.6,37.5-7.6,47.8s35.9,3.9,44.5-12.5C115.5,92.6,113.9,74.6,102,67.1Z"/>
+    </svg>
+
+    <div class="modal fade" id="modal-email-sem-cadastro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark rounded-4">
+                <div class="modal-body bg-dark text-light rounded-4 p-3">
+                    <div class="d-flex justify-content-center">
+                        <img src="../static/assets/img/sad-emoji.png" alt="Emoji triste" class="col-6 col-md-3 m-2">
+                    </div>
+                    <h4>Hmm... parece que você ainda não se inscreveu no projeto de adoção.</h4>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                        <button type="button" class="btn btn-primary link-adocao">Fazer inscrição</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
+
+    {% if show_modal %}
+        <script>
+            // Exibir o modal se show_modal for True
+            $(document).ready(function() {
+                $('#myModal').modal('show');
+            });
+        </script>
+    {% endif %}
+{% endblock %}

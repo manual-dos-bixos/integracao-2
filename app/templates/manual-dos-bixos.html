@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %} Manual dos Bixos {% endblock %}
+
+{% block content %}
+<div class="container py-5 text-light">
+    <header class="mb-5 text-center">
+        <h1 class="display-4">Bem-vindo(a) à Fatec!</h1>
+        <p class="lead">E aí, calouro! Bem-vindo(a) à Fatec! A gente, que já tá aqui há um tempo, preparou esse manual pra te dar um apoio. Se atente nas dicas, aproveite a experiência e bora construir uma trajetória incrível juntos!</p>
+    </header>
+
+    <section class="mb-5">
+        <h2>Adoção e Integração</h2>
+        <p>O processo de adoção de calouros por veteranos é muito importante durante a trajetória acadêmica. Consiste na atribuição de um veterano para ajudar você, calouro, a ter alguém mais próximo para se informar, solicitar apoio e claro, fazer amigos!</p>
+    </section>
+
+    <section class="mb-5">
+        <h1>Dicas de sobrevivência</h1>
+        <p>Aqui listamos algumas coisas que podem ser muito importantes durante o curso. Mesmo que tenha acabado de entrar, não deixe de ler o conteúdo sobre estágio e TG (Trabalho de Graduação, equivalente ao TCC).</p>
+
+        <h2 class="mt-4">Dicas gerais</h2>
+        <ul class="list-unstyled">
+            <li class="mb-3">
+                <strong>Microsoft Tools:</strong> O Centro Paula Souza usa as ferramentas da Microsoft como Teams, OneDrive, e Outlook.
+                <ul>
+                    <li>Quase todos os professores disponibilizam tarefas, conteúdos e avisos pelo Teams.</li>
+                    <li>O espaço disponibilizado no OneDrive é de apenas 700MB.</li>
+                    <li>A Fatec exige autenticação de dois fatores, linkada com o seu telefone.</li>
+                    <li>Professores quase nunca respondem a emails enviados pelo Outlook.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Ferramentas Gratuitas:</strong> Diversas ferramentas pagas têm versões gratuitas para estudantes, como Figma, Github, JetBrains, Canva, e muitas outras!
+            </li>
+        </ul>
+    </section>
+
+    <section class="mb-5">
+        <h2>Transporte</h2>
+        <p><strong>Estacionamento</strong></p>
+        <p><strong>Vans</strong> (itinerário e informação para contato)</p>
+
+        <h3 class="mt-4">Linhas de ônibus que passam pela faculdade:</h3>
+        <ul class="list-group">
+            {% for linha in linhas %}
+            <li class="list-group-item bg-dark text-light border-0">
+                {{ linha.numero_linha }} | Sentido 1: {{ linha.sentido_1 }} | Sentido 2: {{ linha.sentido_2 }}
+            </li>
+            {% endfor %}
+            <li class="list-group-item bg-dark text-light border-0"><a href="https://www.emtu.sp.gov.br/EMTU/home/home.htm">Consulte Itinerários das linhas intermunicipais no site da EMTU!</a></li>
+            <li class="list-group-item bg-dark text-light border-0"><a href="http://www.emdec.com.br/eficiente/sites/portalemdec/pt-br/site.php?secao=horarios_itinerarios">Consulte Itinerários das linhas de Campinas no site da EMDEC!</a></li>
+            <li class="list-group-item bg-dark text-light border-0">Para quem mora fora de Campinas vale lembrar dos serviços de fretados da sua região!</li>
+        </ul>
+    </section>
+</div>
+{% endblock %}

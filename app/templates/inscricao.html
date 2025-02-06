@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+
+{% block title %} inscrição para adoção {% endblock %}
+
+{% block content %}
+
+    {% if inscricao_concluida %}
+        <div id="conclusao-incricao" class="d-flex flex-column justify-content-center align-items-center text-light p-3">
+            <h1>Obrigado!</h1>
+            <p class="m-3">Em breve faremos a conexão entre veteranos e calouros e te notificaremos via whatsapp.</p>
+
+            <div class="mt-5">
+                <a class="btn btn-primary" href="{{ url_for('main.form') }}"><i class="bi bi-file-earmark-plus"></i>&nbsp;Nova incrição</a>
+                <a class="btn btn-primary" href="{{ url_for('main.index') }}"><i class="bi bi-house-fill"></i>&nbsp;Página inicial</a>
+            </div>
+        </div>
+
+        <svg preserveAspectRatio="xMidYMid slice" viewBox="10 10 80 80">
+            <path fill="#444444" class="out-top" d="M37-5C25.1-14.7,5.7-19.1-9.2-10-28.5,1.8-32.7,31.1-19.8,49c15.5,21.5,52.6,22,67.2,2.3C59.4,35,53.7,8.5,37-5Z"/>
+            <path fill="#5c5c5c" class="in-top" d="M20.6,4.1C11.6,1.5-1.9,2.5-8,11.2-16.3,23.1-8.2,45.6,7.4,50S42.1,38.9,41,24.5C40.2,14.1,29.4,6.6,20.6,4.1Z"/>
+            <path fill="#242424" class="out-bottom" d="M105.9,48.6c-12.4-8.2-29.3-4.8-39.4.8-23.4,12.8-37.7,51.9-19.1,74.1s63.9,15.3,76-5.6c7.6-13.3,1.8-31.1-2.3-43.8C117.6,63.3,114.7,54.3,105.9,48.6Z"/>
+            <path fill="#1a1a1a" class="in-bottom" d="M102,67.1c-9.6-6.1-22-3.1-29.5,2-15.4,10.7-19.6,37.5-7.6,47.8s35.9,3.9,44.5-12.5C115.5,92.6,113.9,74.6,102,67.1Z"/>
+        </svg>
+    {% else %}
+        <section id="section-form-inscricao">
+            <div class="text-light" id="form-header">
+                <h1 class="text-center">Inscrição para adoção</h1>
+                <span id="form-progress-bar" class="hidden">
+                    <span class="progress"></span>
+                    <span class="step-icon">1</span>
+                    <span class="step-icon">2</span>
+                    <span class="step-icon">3</span>
+                    <span class="step-icon">4</span>
+                    <span class="step-icon">5</span>
+                    <span class="step-icon">6</span>
+                </span>
+            </div>
+
+            <form method="POST" class="col-xs-8 col-md-6 col-lg-4 p-0 text-light" id="form-adocao">
+                <div class="form-section section-atual text-center">
+                    {{ form.hidden_tag() }}
+
+                    <h4 class="mb-3">Eu sou...</h4>
+                    <button class="w-100 btn btn-lg btn-primary px-4 py-3 my-3 d-flex flex-column align-items-center btn-tipo-aluno-inscricao" data-tipo="calouro">
+                        <h1 class="m-0 p-0">Calouro</h1>
+                        <small>Quero ser adotado!</small>
+                    </button>
+                    <button class="w-100 btn btn-lg btn-primary px-4 py-3 my-3 d-flex flex-column align-items-center btn-tipo-aluno-inscricao" data-tipo="veterano">
+                        <h1 class="m-0 p-0">Veterano</h1>
+                        <small>Quero adotar!</small>
+                    </button>
+                </div>
+                <div class="form-section">
+                    <div class="form-group">
+                        <div class="form-group">
+                            {{ form.nome.label(class="mt-3 mb-2") }}
+                            {{ form.nome() }}
+                            {% for error in form.nome.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.sobrenome.label(class="mt-3 mb-2") }}
+                            {{ form.sobrenome() }}
+                            {% for error in form.sobrenome.errors %}
+                                <span style="color: red;">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <div class="form-group">
+                        {{ form.idade.label(class="mt-3 mb-2") }}
+                        {{ form.idade() }}
+                        {% for error in form.idade.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.whatsapp.label(class="mt-3 mb-2") }}
+                        {{ form.whatsapp() }}
+                        {% for error in form.whatsapp.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.semestre_atual.label(class="mt-3 mb-2") }}
+                        {{ form.semestre_atual() }}
+                        {% for error in form.semestre_atual.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="form-section">
+                    <div class="form-group">
+                        {{ form.curso() }}
+                        {% for error in form.curso.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="d-flex flex-column" id="curso-btns">
+                        <p>Qual é o seu curso?</p>
+                        <button class="btn btn-light btn-curso" data-codigo="1">Análise e Desenvolvimento de Sistemas (Manhã)</button>
+                        <button class="btn btn-light btn-curso" data-codigo="2">Análise e Desenvolvimento de Sistemas (Tarde)</button>
+                        <button class="btn btn-light btn-curso" data-codigo="3">Gestão da Tecnologia da Informação (Noite)</button>
+                        <button class="btn btn-light btn-curso" data-codigo="4">Gestão de Energia e Eficiência Energética (Noite)</button>
+                        <button class="btn btn-light btn-curso" data-codigo="5">Gestão Empresarial (Manhã)</button>
+                        <button class="btn btn-light btn-curso" data-codigo="6">Logística (Noite)</button>
+                        <button class="btn btn-light btn-curso" data-codigo="7">Processos Químicos (Manhã)</button>
+                        <button class="btn btn-light btn-curso" data-codigo="8">Processos Químicos (Noite)</button>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <p>Selecione abaixo temas que são de seu tema.</p>
+                    {% for tema in temas %}
+                        <div class="tema">
+                            <strong>{{ tema.nome }}</strong>
+                            <p><small>{{ tema.descricao }}</small></p>
+                            <input type="checkbox" name="tema" value="{{ tema.id }}" hidden>
+                        </div>
+                    {% endfor %}
+                    <div class="form-group mt-4">
+                        <p class="my-1">Pensou em algo que não está listado? <strong>Inclua abaixo!</strong></p>
+                        <small class="mb-4 text-secondary">Aperte enter para incluir temas.</small>
+                        <input type="text" class="form-control btn-dark" id="novo-tema">
+                    </div>
+                    <div id="lista-temas-novos"></div>
+                </div>
+                <div class="form-section">
+                    <div class="form-group">
+                        {{ form.sobre.label(class="mt-3 mb-2") }}
+                        {{ form.sobre() }}
+                        {% for error in form.sobre.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="d-flex justify-content-center mt-4">
+                        <button class="btn btn-lg btn-primary text-center px-5 mt-4" id="btn-enviar-form">Enviar</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="d-flex justify-content-between w-100 p-3 py-4 bottom-0" id="form-footer">
+                <button class="btn btn-primary text-center disabled" id="btn-prev">
+                    <i class="bi bi-caret-left-fill me-2"></i>&nbsp;Anterior
+                </button>
+                <button class="btn btn-primary text-center" id="btn-next">
+                    Próximo&nbsp;<i class="bi bi-caret-right-fill me-2"></i>
+                </button>
+            </div>
+        </section>
+
+        <div id="warning-campos-incompletos" class="warning d-flex align-items-end justify-content-center" hidden>
+            <div class="bg-danger d-flex flex-column align-items-center justify-content-center rounded-3">
+                <span class="close-warning w-100 text-end p-1"><i class="bi bi-x-lg"></i></span>
+                <div class="text-light p-2 px-3">
+                    <p class="text-light"><strong>Campos incompletos.</strong></p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+    <script src="../static/scripts/form.js"></script>
+
+    {% if alert %}
+        <script>
+            // Exibir o modal se show_modal for True
+            $(document).ready(function() {
+                $('#modal-email-sem-cadastro').modal('show');
+            });
+        </script>
+    {% endif %}
+{% endblock %}

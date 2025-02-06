@@ -1,0 +1,358 @@
+:root{
+    --st: #8719C4;
+    --nd: #641290;
+    --rd: #4d116d;
+    --bg-light: #b75ae9;
+    --bs-body-font-size: 14px;
+}
+
+* {
+    font-family: "Roboto", serif;
+}
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgb(91, 91, 91);
+    border-radius: 20px;
+}
+body {
+    margin: 0;
+    background-color: #303030;
+}
+p {
+    font-weight: 300 !important;
+}
+
+#index {
+    height: 100vh;
+}
+.aba-bg {
+    overflow: hidden;
+    position: absolute;
+    border-radius: 0 0 50em 50em;
+    filter: drop-shadow(0 0 35px rgb(21, 20, 28));
+}
+.aba-bg div {
+    width: 70vw;
+    height: 65vh;
+    max-width: 400px;
+    background-image: url('../assets/img/logo-atletica-fundo-preto-cortado.jpg');
+    background-size: cover;
+    filter: blur(5px) brightness(40%) grayscale(50%);
+}
+
+#main {
+    min-height: 100vh;
+}
+.header {
+    background-color: var(--bg-light);
+    background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
+}
+.header h1 {
+    font-size: 2.6em;
+}
+.logo img {
+    max-width: 40%;
+}
+#logo-atletica {
+    border: 3px solid white;
+    border-radius: 50%;
+}
+#logo-fatec {
+    display: block;
+    margin: auto 0;
+    border-radius: 50%;
+    width: 100%;
+    overflow: visible;
+}
+.fun-font {
+    font-family: "Barriecito", serif;
+}
+
+svg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1050;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.out-top {
+    animation: rotate 20s linear infinite;
+    transform-origin: 13px 25px;
+}
+.in-top {
+    animation: rotate 10s linear infinite;
+    transform-origin: 13px 25px;
+}
+.out-bottom {
+    animation: rotate 25s linear infinite;
+    transform-origin: 84px 93px;
+}
+.in-bottom {
+    animation: rotate 15s linear infinite;
+    transform-origin: 84px 93px;
+}
+
+.btn {
+    border-radius: 2em;
+    transition: background-color 0s;
+}
+.bg-primary, .btn-primary{
+    background-color: var(--st) !important;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: var(--nd) !important;
+}
+.btn-primary:active {
+    background-color: var(--rd) !important;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-section {
+    height: 100vh;
+}
+.embedded-form {
+    background-color: var(--bg-light);
+    height: calc(100% - 5em);
+    overflow-x: hidden;
+    width: 100%;
+}
+.embedded-form iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.btn-tipo-aluno {
+    transition: box-shadow .1s ease-in-out;
+}
+.selected-btn {
+    -webkit-box-shadow: 0px 0px 16px 0px rgba(255,255,255,1);
+    -moz-box-shadow: 0px 0px 16px 0px rgba(255,255,255,1);
+    box-shadow: 0px 0px 16px 0px rgba(255,255,255,1);
+    background-color: var(--nd) !important;
+}
+
+#btn-acessar-manual {
+    height: 2.5em;
+    padding: 0 2em;
+    border-width: 1px;
+    text-align: center;
+    border-radius: 40px;
+    background: var(--st);
+    border: 2px solid var(--nd);
+    color: #fff;
+    transition: all 0.1s ease;
+}
+#btn-acessar-manual:hover {
+    color: white;
+    background: var(--nd);
+}
+.loading-btn {
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0 !important;
+    border-color: #bbbbbb !important;
+    border-left-color: #1ecd64 !important;
+    border-width: 3px !important;
+    background-color: transparent !important;
+    animation: rotating 2s 0.1s linear infinite;
+}
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.btn-curso {
+    color: white !important;
+    border-radius: 4px;
+    margin: 4px;
+    padding: 8px;
+    border: none;
+    text-align: start;
+    transition: all .1s;
+    background-color: #141414;
+}
+.btn-curso:hover {
+    background-color: #4d116d;
+}
+.btn-curso:active {
+    background-color: #8719C4 !important;
+}
+.btn-curso-ativo {
+    background-color: #641290;
+}
+.btn-curso-ativo:hover {
+    background-color: #4d116d !important;
+}
+
+#section-form-inscricao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+#form-adocao {
+    height: calc(100vh - 17em);
+    overflow-x: hidden;
+    width: 100vw;
+    position: relative;
+    padding: 0;
+}
+#form-header {
+    width: 100%;
+    height: 10em;
+    padding: 2em;
+}
+#form-footer {
+    height: 7em;
+}
+.form-section {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    transition: left 0.3s ease-in-out;
+    padding: 2em;
+    height: calc(100vh - 17em);
+    overflow: scroll;
+}
+.form-section.section-atual {
+    left: 0;
+}
+
+.btn-dark.form-control {
+    color: white;
+    background-color: #4d5154;
+    text-align: start;
+    padding: .5em 1em;
+    border-radius: 8px;
+}
+
+#form-progress-bar {
+    margin-top: 1em;
+    height: 6px;
+    border-radius: 1em;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+#form-progress-bar .progress {
+    position: absolute;
+    height: 6px;
+    border: 1px solid #641290;
+    border-radius: 0;
+    width: 0;
+    background-color: #641290;
+    transition: all .2s;
+}
+#form-progress-bar .step-icon {
+    height: 1.6em;
+    width: 1.6em;
+    border-radius: 2em;
+    position: relative;
+    bottom: .5em;
+    font-size: 1em;
+    color: #641290;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    transition: all .2s;
+}
+
+#sobre::placeholder {
+    color: white;
+    opacity: .6;
+    font-weight: 100;
+}
+
+.form-section::-webkit-scrollbar {
+    background-color: #00000000;
+}
+.form-section::-webkit-scrollbar-button {
+    background-color: #00000000;
+}
+.form-section::-webkit-scrollbar-thumb {
+    background-color: #4d5154;
+}
+.form-section::-webkit-scrollbar-track {
+    background-color: #00000000;
+}
+.form-section::-webkit-scrollbar-track-piece {
+    background-color: #00000000;
+}
+.form-section::-webkit-scrollbar-corner {
+    background-color: #00000000;
+}
+.form-section::-webkit-resizer {
+    background-color: #00000000;
+}
+
+.tema {
+    border: 1px solid #cccccc59;
+    border-radius: .5em;
+    margin: 4px;
+    padding: 1em;
+    transition: background-color .2s;
+}
+.tema p {
+    margin: 0;
+}
+.tema-selecionado {
+    background-color: #7918ae;
+}
+#lista-temas-novos {
+    display: flex;
+    flex-wrap: wrap;
+    margin-block: 2em;
+    width: 100%;
+}
+.tema-adicionado {
+    background-color: #641290;
+    color: #fff;
+    padding: .5em 1em;
+    border-radius: 8px;
+    margin: 4px;
+    display: flex;
+    align-items: center;
+}
+
+#warning-campos-incompletos {
+    width: 100vw;
+    position: absolute;
+    top: -30vh;
+    max-height: 30vh;
+    padding-top: 2em;
+    transition: all .5s cubic-bezier(1,0,0,1);
+    background: #00000000;
+    background: linear-gradient(0deg, #00000000 0%, #000 100%);
+}
+
+#conclusao-incricao {
+    height: 100vh;
+    width: 100vw;
+}

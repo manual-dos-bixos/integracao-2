@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} Integração - Admin page {% endblock %}
+
+{% block content %}
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <th class="id">ID</th>
+            <th class="nome">Nome</th>
+            <th class="sobrenome">Sobrenome</th>
+            <th class="idade">Idade</th>
+            <th class="whatsapp">Whatsapp</th>
+            <th class="semestre">Semestre</th>
+            <th class="sobre">Sobre</th>
+            <th class="curso">Curso</th>
+        </thead>
+        <tbody>
+            {% for aluno in alunos %}
+                <tr>
+                    <td class="id">{{ aluno.id }}</td>
+                    <td class="nome">{{ aluno.nome }}</td>
+                    <td class="sobrenome">{{ aluno.sobrenome }}</td>
+                    <td class="idade">{{ aluno.idade }}</td>
+                    <td class="whatsapp">{{ aluno.whatsapp }}</td>
+                    <td class="semestre">{{ aluno.semestre }}</td>
+                    <td class="sobre">{{ aluno.sobre }}</td>
+                    <td class="curso">{{ aluno.curso.sigla }} <small>({{ aluno.curso.turno }})</small></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
