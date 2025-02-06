@@ -84,3 +84,11 @@ class FormularioCadastro(FlaskForm):
             'required': 'true'
         }
     )
+
+    temas = StringField(
+        'Temas',
+        render_kw = {
+            'class': 'form-check d-none',
+            'required': 'true',
+        }
+    )

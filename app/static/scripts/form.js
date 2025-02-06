@@ -97,8 +97,18 @@ $(document).on('keydown', '.telefone-input', function(e) {
 });
 
 $(document).on('click', '.tema', function(e) {
+    let temaId = $(this).data('codigo');
     $(this).toggleClass('tema-selecionado');
-    $(this).find('input[type="checkbox"]').attr('checked', $(this).hasClass('tema-selecionado'));
+
+    if ($(this).hasClass('tema-selecionado')) {
+        let interesses = $('#temas').val() ? $('#temas').val() + ',' : '';
+        $('#temas').val(interesses + $(this).data('codigo'));
+    } else {
+        let interesses = $('#temas').val();
+        interesses = interesses.replace(temaId + ',', '').replace(',' + temaId, '');
+        $('#temas').val(interesses);
+    }
+    console.log($('#temas').val());
 });
 
 $(document).on('keydown', '#novo-tema', function(e) {

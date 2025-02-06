@@ -28,13 +28,18 @@ def form():
         semestre_atual = form.semestre_atual.data
         curso = form.curso.data
         sobre = form.sobre.data
+        temas = form.temas.data
         
         novoAluno = Aluno(nome=nome, sobrenome=sobrenome, idade=idade, whatsapp=whatsapp, semestre=semestre_atual, curso_id=curso, sobre=sobre)
         db.session.add(novoAluno)
+        db.session.flush()
+        aluno_id = novoAluno.id
 
-        # temas = request.args.getlist('tema')
-        # for tema in temas:
-            # interesse = AlunoTema()
+        temas = temas.split(',')
+        for tema in temas:
+            interesse = AlunoTema(aluno_id=aluno_id, tema_id=tema)
+            db.session.flush()
+            db.session.add(interesse)
 
         db.session.commit()
 
