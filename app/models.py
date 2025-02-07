@@ -50,3 +50,17 @@ class AlunoTema(db.Model):
     def __init__(self, aluno_id, tema_id):
         self.aluno_id = aluno_id
         self.tema_id = tema_id
+
+class Adocao(db.Model):
+    __tablename__ = 'adocao'
+    id = db.Column(db.Integer, primary_key=True)
+    calouro_id = db.Column(db.Integer, db.ForeignKey('aluno.id'), nullable=False)
+    veterano_id = db.Column(db.Integer, db.ForeignKey('aluno.id'), nullable=False)
+    notificados = db.Column(db.Boolean, nullable=False)
+    
+    calouro = db.relationship('Aluno', foreign_keys=[calouro_id])
+    veterano = db.relationship('Aluno', foreign_keys=[veterano_id])
+    
+    def __init__(self, calouro_id, veterano_id):
+        self.calouro_id = calouro_id
+        self.veterano_id = veterano_id

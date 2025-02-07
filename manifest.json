@@ -1,0 +1,22 @@
+{
+    "name": "Integração de calouros - Fatec Campinas",
+    "short_name": "Integração Fatec Campinas",
+    "description": "Recepção e manual para integração dos calouros da Fatec Campinas.",
+    "start_url": "/",
+    "display": "fullscreen", 
+    "background_color": "#000",
+    "theme_color": "#8719C4",
+    "icons": [
+        {
+            "src": "assets/favicon/icon192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/favicon/icon512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+  }
+  

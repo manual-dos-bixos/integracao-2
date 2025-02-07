@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, url_for, flash, redirect, mak
 from app.forms import FormularioCadastro
 from app.models import Aluno, Curso, Tema, AlunoTema
 from . import db
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import func
 
 
 main = Blueprint('main', __name__)
@@ -11,7 +11,19 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
-    return render_template('index.html')
+    veteranos_count = Aluno.query.filter(Aluno.semestre > 1).count()
+    calouros_count = Aluno.query.filter(Aluno.semestre == 1).count()
+
+    # Consultando o nome do tema e a quant de alunos interessados
+    temas = db.session.query(
+        Tema.nome, 
+        func.count(AlunoTema.aluno_id).label('quantidade_alunos')
+    ).join(AlunoTema, AlunoTema.tema_id == Tema.id) \
+    .group_by(Tema.id) \
+    .order_by(func.count(AlunoTema.aluno_id).desc()) \
+    .all()
+
+    return render_template('index.html', veteranos_count=veteranos_count, calouros_count=calouros_count, temas=temas)
 
 
 @main.route('/form', methods=['GET', 'POST'])
@@ -52,26 +64,8 @@ def form():
 def admin():
     pw = os.environ.get('admin_pw')
     if pw != None:
-        alunos = Aluno.query.all()
-        return render_template('admin.html', alunos=alunos)
+        veteranos = Aluno.query.filter(Aluno.semestre > 1)
+        calouros = Aluno.query.filter(Aluno.semestre == 1)
+        return render_template('admin.html', veteranos=veteranos, calouros=calouros)
     else:
         return redirect('/')
-
-
-# Endpoint para retornar todos os alunos
-@main.route('/alunos', methods=['GET'])
-def get_alunos():
-    alunos = Aluno.query.all()  # Obtém todos os alunos
-    alunos_list = []
-    for aluno in alunos:
-        alunos_list.append({
-            'id': aluno.id,
-            'nome': aluno.nome,
-            'sobrenome': aluno.sobrenome,
-            'idade': aluno.idade,
-            'whatsapp': aluno.whatsapp,
-            'semestre': aluno.semestre,
-            'sobre': aluno.sobre,
-            'curso': aluno.curso.sigla + ' - ' + aluno.curso.turno
-        })
-    return render_template('admin.html', alunos=alunos)

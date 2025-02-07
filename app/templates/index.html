@@ -22,7 +22,7 @@
     </section>
 
     <section id="main" class="">
-        <div class="d-flex justify-content-center align-items-center py-5 px-3">
+        <div class="d-flex flex-column justify-content-center align-items-center py-5 px-3">
             <div class="col-12 col-md-10 col-lg-8 card bg-dark text-light p-3 rounded-5 m-auto">
                 <div class="header rounded-4 p-3 mb-5">
                     <h1 class="fun-font text-center m-auto">
@@ -48,6 +48,41 @@
                 </div>
 
                 <p class="text-center text-secondary m-4 mb-0">Fatec Campinas | 2025-1</p>
+            </div>
+
+            <div class="col-12 col-md-10 col-lg-8 card bg-dark text-light p-3 rounded-5 m-auto mt-5">
+                <h1 class="text-center fun-font mt-3">Estatísticas</h1>
+                <hr>
+                <h3>Inscritos até o momento</h3>
+                <div class="rounded-3 bg-primary">
+                    <div class="rounded-top d-block d-flex pt-3">
+                        <i class="bi bi-person-add fs-1 ms-3 w-25"></i>
+                        <div class="fw-bold w-25 fs-4 text-end px-2">{{ calouros_count }}</div>
+                        <div class="fw-bold w-25 fs-4 px-2">{{ veteranos_count }}</div>
+                        <i class="bi bi-person-workspace fs-1 me-3 w-25 text-end"></i>
+                    </div>
+                    <div class="rounded-bottom d-block d-flex pb-3">
+                        <div class="w-50 px-2 text-end">Calouros</div>
+                        <div class="w-50 px-2">Veteranos</div>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-center align-items-center">
+                    <h3 class="rounded-3 bg-primary me-3 p-3 rounded-circle fw-bold">26</h3>
+                    <h3>Calouros adotados</h3>
+                </div>
+                <hr>
+                <h3>Temas com mais engajamento</h3>
+                <div>
+                    {% for tema in temas %}
+                        <div class="tema-lista">
+                            <p class="tema-nome">{{ tema.nome }}</p>
+                            <input class="tema-quant-alunos" type="number" value="{{ tema.quantidade_alunos }}" hidden>
+                            <span class="quant-alunos-bar"></span>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="btn btn-dark my-4 border" id="ver-todos-temas"><i class="bi bi-caret-down-fill"></i></button>
             </div>
         </div>
     </section>
