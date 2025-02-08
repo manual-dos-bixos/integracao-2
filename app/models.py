@@ -1,6 +1,7 @@
 from flask import Flask
 from . import db
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql import func
 
 
 class Aluno(db.Model):
@@ -24,6 +25,18 @@ class Aluno(db.Model):
         self.semestre = semestre
         self.sobre = sobre
         self.curso_id = curso_id
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'nome': self.nome,
+            'sobrenome': self.sobrenome,
+            'idade': self.idade,
+            'whatsapp': self.whatsapp,
+            'curso': self.curso.sigla + ' - ' + self.curso.turno,
+            'semestre': self.semestre,
+            'sobre': self.whatsapp,
+        }
 
 class Curso(db.Model):
     __tablename__ = 'curso'
@@ -54,6 +67,7 @@ class AlunoTema(db.Model):
 class Adocao(db.Model):
     __tablename__ = 'adocao'
     id = db.Column(db.Integer, primary_key=True)
+    created_at = db.Column(db.DateTime, default=func.now())
     calouro_id = db.Column(db.Integer, db.ForeignKey('aluno.id'), nullable=False)
     veterano_id = db.Column(db.Integer, db.ForeignKey('aluno.id'), nullable=False)
     notificados = db.Column(db.Boolean, nullable=False)
@@ -64,3 +78,13 @@ class Adocao(db.Model):
     def __init__(self, calouro_id, veterano_id):
         self.calouro_id = calouro_id
         self.veterano_id = veterano_id
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'created_at': self.created_at.strftime("%d/%m - %H:%M"),
+            'calouro': self.calouro.nome + self.calouro.sobrenome,
+            'veterano': self.veterano.nome + self.veterano.sobrenome,
+            'notificados': self.notificados,
+            'curso': self.veterano.curso.sigla + ' - ' + self.veterano.curso.turno
+        }

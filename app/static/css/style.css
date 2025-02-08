@@ -352,7 +352,7 @@ svg {
     align-items: center;
 }
 
-#warning-campos-incompletos {
+.warning {
     width: 100vw;
     position: absolute;
     top: -30vh;
