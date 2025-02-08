@@ -1,14 +1,30 @@
 $(document).ready(function() {
     $('body').css('overflow', 'hidden');
     $('#index').show();
+    $('section').css({'transform': 'translateY(0)', 'transition': 'all 1.5s cubic-bezier(.5,0,0,1)'});
+
+    maiorQuantAlunos = $('.tema-lista:first').find('.tema-quant-alunos').val();
+    $('.tema-lista').each(function() {
+        quantAlunos = $(this).find('.tema-quant-alunos').val();
+        $(this).find('.quant-alunos-bar').css({'width': (quantAlunos / maiorQuantAlunos) * 100 + '%'});
+        if ($(this).index() > 5) $(this).slideUp(0);
+    });
+});
+
+$(document).on('click', '#ver-todos-temas', function() {
+    if ($(this).hasClass('toggled')) {
+        $('.tema-lista:gt(5)').slideUp(200);
+    } else {
+        $('.tema-lista').slideDown(200);
+    }
+    
+    $(this).find('.bi').toggleClass('bi-caret-up-fill');
+    $(this).toggleClass('toggled');
 });
 
 $(document).on('click', '#scroll-to-main', function() {
     $('body').css({'overflow': 'scroll'});
-    window.scrollTo({
-        top: window.innerHeight + (window.outerHeight - window.innerHeight),
-        behavior: 'smooth'
-    });
+    $('section').css({'transform': 'translateY(-100vh)'});
 });
 
 window.addEventListener('scroll', function() {

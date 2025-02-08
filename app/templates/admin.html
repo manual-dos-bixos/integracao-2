@@ -4,33 +4,131 @@
 
 {% block content %}
 
-    <table class="table table-dark table-striped">
-        <thead>
-            <th class="id">ID</th>
-            <th class="nome">Nome</th>
-            <th class="sobrenome">Sobrenome</th>
-            <th class="idade">Idade</th>
-            <th class="whatsapp">Whatsapp</th>
-            <th class="semestre">Semestre</th>
-            <th class="sobre">Sobre</th>
-            <th class="curso">Curso</th>
-        </thead>
-        <tbody>
-            {% for aluno in alunos %}
-                <tr>
-                    <td class="id">{{ aluno.id }}</td>
-                    <td class="nome">{{ aluno.nome }}</td>
-                    <td class="sobrenome">{{ aluno.sobrenome }}</td>
-                    <td class="idade">{{ aluno.idade }}</td>
-                    <td class="whatsapp">{{ aluno.whatsapp }}</td>
-                    <td class="semestre">{{ aluno.semestre }}</td>
-                    <td class="sobre">{{ aluno.sobre }}</td>
-                    <td class="curso">{{ aluno.curso.sigla }} <small>({{ aluno.curso.turno }})</small></td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="p-2 py-4">
 
+        <form action="" method="post" id="form-criar-adocao">
+            <div class="form-group m-3">
+                <label for="select-curso-id" class="form-label text-light">Curso</label>
+                <select class="form-select bg-dark text-light" name="select-curso-id" id="select-curso-id">
+                    <option value="">1</option>
+                </select>
+            </div>
+            <div class="form-group m-3">
+                <label for="select-calouro-id" class="form-label text-light">Calouro</label>
+                <select class="form-select bg-dark text-light" name="select-calouro-id" id="select-calouro-id">
+                    <option value="">1</option>
+                </select>
+            </div>
+            <div class="form-group m-3">
+                <label for="select-veterano-id" class="form-label text-light">Veterano</label>
+                <select class="form-select bg-dark text-light" name="select-veterano-id" id="select-veterano-id">
+                    <option value="">1</option>
+                </select>
+            </div>
+        </form>
+
+        <p class="d-flex justify-content-center m-0">
+            <button class="btn btn-dark rounded-0 rounded-top w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAdocoes" aria-expanded="false" aria-controls="collapseAdocoes">
+                Adoções
+            </button>
+        </p>
+        <div class="collapse p-0 m-0" id="collapseAdocoes">
+            <div class="card card-body p-0 bg-dark overflow-x-scroll">
+                <table class="table table-dark table-striped m-0">
+                    <thead>
+                        <th class="data">Data</th>
+                        <th class="calouro">Calouro</th>
+                        <th class="veterano">Veterano</th>
+                        <th class="curso">Curso</th>
+                        <th class="notificados">Notificados</th>
+                    </thead>
+                    <tbody>
+                        {% for adocao in adocoes %}
+                            <tr>
+                                <th class="data">Data</th>
+                                <th class="calouro">Calouro</th>
+                                <th class="veterano">Veterano</th>
+                                <th class="curso">Curso</th>
+                                <th class="notificados">Notificados</th>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <p class="d-flex justify-content-center m-0">
+            <button class="btn btn-dark rounded-0 rounded-top w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCalouros" aria-expanded="false" aria-controls="collapseCalouros">
+                Calouros
+            </button>
+        </p>
+        <div class="collapse p-0 m-0" id="collapseCalouros">
+            <div class="card card-body p-0 bg-dark overflow-x-scroll">
+                <table class="table table-dark table-striped m-0">
+                    <thead>
+                        <th class="id">ID</th>
+                        <th class="nome">Nome</th>
+                        <th class="sobrenome">Sobrenome</th>
+                        <th class="idade">Idade</th>
+                        <th class="whatsapp">Whatsapp</th>
+                        <!-- <th class="semestre">Semestre</th> -->
+                        <!-- <th class="sobre">Sobre</th> -->
+                        <th class="curso">Curso</th>
+                    </thead>
+                    <tbody>
+                        {% for calouro in calouros %}
+                            <tr>
+                                <td class="id">{{ calouro.id }}</td>
+                                <td class="nome">{{ calouro.nome }}</td>
+                                <td class="sobrenome">{{ calouro.sobrenome }}</td>
+                                <td class="idade">{{ calouro.idade }}</td>
+                                <td class="whatsapp">{{ calouro.whatsapp }}</td>
+                                <!-- <td class="semestre">{{ calouro.semestre }}</td> -->
+                                <!-- <td class="sobre">{{ calouro.sobre }}</td> -->
+                                <td class="curso">{{ calouro.curso.sigla }} <small>({{ calouro.curso.turno }})</small></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <p class="d-flex justify-content-center m-0">
+            <button class="btn btn-dark rounded-0 rounded-top w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVeteranos" aria-expanded="false" aria-controls="collapseVeteranos">
+                Veteranos
+            </button>
+        </p>
+        <div class="collapse p-0 m-0" id="collapseVeteranos">
+            <div class="card card-body p-0 bg-dark overflow-x-scroll">
+                <table class="table table-dark table-striped m-0">
+                    <thead>
+                        <th class="id">ID</th>
+                        <th class="nome">Nome</th>
+                        <th class="sobrenome">Sobrenome</th>
+                        <th class="idade">Idade</th>
+                        <th class="whatsapp">Whatsapp</th>
+                        <th class="semestre">Semestre</th>
+                        <!-- <th class="sobre">Sobre</th> -->
+                        <th class="curso">Curso</th>
+                    </thead>
+                    <tbody>
+                        {% for veterano in veteranos %}
+                            <tr>
+                                <td class="id">{{ veterano.id }}</td>
+                                <td class="nome">{{ veterano.nome }}</td>
+                                <td class="sobrenome">{{ veterano.sobrenome }}</td>
+                                <td class="idade">{{ veterano.idade }}</td>
+                                <td class="whatsapp">{{ veterano.whatsapp }}</td>
+                                <td class="semestre">{{ veterano.semestre }}</td>
+                                <!-- <td class="sobre">{{ veterano.sobre }}</td> -->
+                                <td class="curso">{{ veterano.curso.sigla }} <small>({{ veterano.curso.turno }})</small></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block scripts %}

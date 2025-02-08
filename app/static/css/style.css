@@ -122,6 +122,17 @@ svg {
     background-color: var(--rd) !important;
 }
 
+.tema-nome {
+    margin: 1.2em 0 2px;
+}
+.quant-alunos-bar {
+    display: block;
+    height: 6px;
+    border-radius: 3px;
+    background-color: #8719C4;
+    width: 100%;
+}
+
 .hidden {
     display: none;
 }
