@@ -75,3 +75,7 @@ def get_alunos():
             'curso': aluno.curso.sigla + ' - ' + aluno.curso.turno
         })
     return render_template('admin.html', alunos=alunos)
+
+@main.route('/manual', methods=['GET'])
+def get_manual():
+    return render_template('manual-dos-bixos.html')

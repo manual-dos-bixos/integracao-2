@@ -1,56 +1,62 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block title %} Manual dos Bixos {% endblock %}
+{% block title %}Manual do Bixo{% endblock %}
 
 {% block content %}
-<div class="container py-5 text-light">
-    <header class="mb-5 text-center">
-        <h1 class="display-4">Bem-vindo(a) à Fatec!</h1>
-        <p class="lead">E aí, calouro! Bem-vindo(a) à Fatec! A gente, que já tá aqui há um tempo, preparou esse manual pra te dar um apoio. Se atente nas dicas, aproveite a experiência e bora construir uma trajetória incrível juntos!</p>
-    </header>
+<div class="container mt-4">
+    <h1>Manual do Bixo</h1>
+    <p>E aí, calouro! Bem-vindo(a) à Fatec! A gente, que já tá aqui há um tempo, preparou esse manual pra te dar um apoio. Se atente nas dicas, aproveite a experiência e bora construir uma trajetória incrível juntos!</p>
 
-    <section class="mb-5">
-        <h2>Adoção e Integração</h2>
-        <p>O processo de adoção de calouros por veteranos é muito importante durante a trajetória acadêmica. Consiste na atribuição de um veterano para ajudar você, calouro, a ter alguém mais próximo para se informar, solicitar apoio e claro, fazer amigos!</p>
-    </section>
+    <h2>Adoção e Integração</h2>
+    <p>O processo de adoção de calouros por veteranos é muito importante durante a trajetória acadêmica. Consiste na atribuição de um veterano para ajudar você, calouro, a ter alguém mais próximo para se informar, solicitar apoio e claro, fazer amigos!</p>
 
-    <section class="mb-5">
-        <h1>Dicas de sobrevivência</h1>
-        <p>Aqui listamos algumas coisas que podem ser muito importantes durante o curso. Mesmo que tenha acabado de entrar, não deixe de ler o conteúdo sobre estágio e TG (Trabalho de Graduação, equivalente ao TCC).</p>
+    <h1>Dicas de sobrevivência</h1>
+    <p>Aqui listamos algumas coisas que podem ser muito importantes durante o curso. Mesmo que tenha acabado de entrar, não deixe de ler o conteúdo sobre estágio e TG (Trabalho de Graduação, equivalente ao TCC).</p>
 
-        <h2 class="mt-4">Dicas gerais</h2>
-        <ul class="list-unstyled">
-            <li class="mb-3">
-                <strong>Microsoft Tools:</strong> O Centro Paula Souza usa as ferramentas da Microsoft como Teams, OneDrive, e Outlook.
-                <ul>
-                    <li>Quase todos os professores disponibilizam tarefas, conteúdos e avisos pelo Teams.</li>
-                    <li>O espaço disponibilizado no OneDrive é de apenas 700MB.</li>
-                    <li>A Fatec exige autenticação de dois fatores, linkada com o seu telefone.</li>
-                    <li>Professores quase nunca respondem a emails enviados pelo Outlook.</li>
-                </ul>
-            </li>
-            <li>
-                <strong>Ferramentas Gratuitas:</strong> Diversas ferramentas pagas têm versões gratuitas para estudantes, como Figma, Github, JetBrains, Canva, e muitas outras!
-            </li>
-        </ul>
-    </section>
+    <h2>Os primeiros passos</h2>
+    <h3>SIGA</h3>
+    <p>O SIGA (Sistema Integrado de Gestão Acadêmica) é um sistema utilizado por todas as Fatecs onde você, o aluno, pode consultar informações sobre sua vida acadêmica. E sim, o SIGA é famoso pela sua beleza e usabilidade.</p>
 
-    <section class="mb-5">
-        <h2>Transporte</h2>
-        <p><strong>Estacionamento</strong></p>
-        <p><strong>Vans</strong> (itinerário e informação para contato)</p>
+    <h3>O dia a dia do fatecano</h3>
+    <p>A Fatec Campinas oferece aulas em diferentes turnos, e claro, cada turno tem seus horários. Você pode consultar estes horários no SIGA, mas também em papéis colados nos pilares do térreo do prédio da Fatec.</p>
+    <p>Além disso, a Fatec, bem como outras instituições de ensino superior, segue um <a href="https://fateccampinas.edu.br/site/wp-content/uploads/2024/12/Calendario-Escolar-2025-1o-Semestre_Fatec-Campinas.pdf" target="_blank">calendário acadêmico</a>, disponível através do site da Fatec Campinas.</p>
+    <p>Não se esqueça também de visitar o <a href="https://fateccampinas.edu.br/site/" target="_blank">site da Fatec Campinas</a> para mais informações, além de consultar o <a href="https://siga.cps.sp.gov.br/aluno/login.aspx" target="_blank">SIGA</a>.</p>
 
-        <h3 class="mt-4">Linhas de ônibus que passam pela faculdade:</h3>
-        <ul class="list-group">
-            {% for linha in linhas %}
-            <li class="list-group-item bg-dark text-light border-0">
-                {{ linha.numero_linha }} | Sentido 1: {{ linha.sentido_1 }} | Sentido 2: {{ linha.sentido_2 }}
-            </li>
-            {% endfor %}
-            <li class="list-group-item bg-dark text-light border-0"><a href="https://www.emtu.sp.gov.br/EMTU/home/home.htm">Consulte Itinerários das linhas intermunicipais no site da EMTU!</a></li>
-            <li class="list-group-item bg-dark text-light border-0"><a href="http://www.emdec.com.br/eficiente/sites/portalemdec/pt-br/site.php?secao=horarios_itinerarios">Consulte Itinerários das linhas de Campinas no site da EMDEC!</a></li>
-            <li class="list-group-item bg-dark text-light border-0">Para quem mora fora de Campinas vale lembrar dos serviços de fretados da sua região!</li>
-        </ul>
-    </section>
+    <h3>As salas e laboratórios da Fatec</h3>
+    <p>As salas e laboratórios da Fatec são todas numeradas e, por alguma razão, as salas de aula são numeradas de forma que as de maior número estão acima das de menor número, e os laboratórios de forma que os de número menor estão acima dos de menor número. Como por exemplo, as salas de aula 11 e 13 são no 3º andar, no mesmo andar que o LAB 1 e LAB 2.</p>
+    <p>Também existem as salas especiais com nomes únicos, que é o caso de alguns laboratórios do curso de Processos Químicos e outros espaços como o miniauditório.</p>
+
+    <h3>Como ir e voltar da Fatec Campinas</h3>
+    <ul>
+        <li><strong>Transporte público:</strong>A Fatec Campinas tem alguns pontos de ônibus em sua proximidade, com os dois mais próximos a uma distância razoável da portaria. Ambos os pontos contam com os mesmos ônibus, mas que seguem em sentidos opostos. O ponto do lado da pista próxima ao ETECAP tem os ônibus que seguem no sentido São Marcos e Sumaré/Paulínia. Já o ponto do lado oposto, do lado do aeroporto, tem os ônibus que seguem rumo ao centro de Campinas.
+
+            As linhas municipais disponíveis são a 310, 311, 312, 313, 315, 316, 317, 318 e 381. Já as intermunicipais são a 661 e 662.</li>
+        <li><strong>Veículo pessoal:</strong>Se você dirige e vai usar o seu veículo para vir até a Fatec, você precisa registrar seu veículo com a secretaria para poder usar o estacionamento da faculdade. É possível cadastrar seu veículo através do site da Fatec. Consulte a secretaria para mais informações.</li>
+        <li><strong>Fretados e vans:</strong>Se você não vai utilizar um veículo pessoal ou nem mesmo o transporte público, você pode procurar transporte referente à sua região. A Fatec te apresenta algumas opções de transporte particular em um painel em uma parede à direita da secretaria.</li>
+    </ul>
+
+    <h2>Oportunidades de estudo extracurricular</h2>
+    <p>O Centro Paula Souza possui muitos programas interessantes para seus alunos e docentes, incluindo matérias extracurriculares e até oportunidades para intercâmbio. (Todas muito boas para seu currículo também!).</p>
+
+    <h3>ARInter</h3>
+    <p>A ARInter (Agência de Relações Internacionais) é um dos braços do Centro Paula Souza. Ela oferece aos alunos e aos docentes na rede do CPS oportunidades para estudar assuntos extracurriculares e em língua estrangeira de forma virtual (EaD), mas também oportunidades de intercâmbio em instituições parceiras de outros países.</p>
+    <p>Conheça mais sobre a ARInter <a href="https://arinter.cps.sp.gov.br/sobre-a-arinter/" target="_blank">aqui</a>, e veja os editais abertos <a href="https://arinter.cps.sp.gov.br/editais-abertos/" target="_blank">aqui</a>.</p>
+
+    <h2>Como resolver suas pendências com a Fatec Campinas</h2>
+    <p>Para resolver suas pendências acadêmicas com a secretaria, é melhor se comunicar por e-mail. A secretaria da Fatec Campinas atende via dois endereços de e-mail, sendo eles f276acad@cps.sp.gov.br e secretaria@fateccampinas.edu.br. Caso necessário, você também pode ir até a secretaria da Fatec durante seu horário de funcionamento. </p>
+    <p>Através do SIGA você também pode pedir documentos. É recomendado acompanhar estes pedidos de documentos com mensagens via e-mail para a secretaria.</p>
+
+    <h2>Dicas gerais</h2>
+    <ol>
+        <li>O Centro Paula Souza usa as ferramentas da Microsoft como Teams, OneDrive e Outlook.
+            <ul>
+                <li>Quase todos os professores disponibilizam tarefas, conteúdos e avisos pelo Teams.</li>
+                <li>O espaço disponibilizado no OneDrive é de apenas 700MB.</li>
+                <li>A Fatec Exige autenticação de dois fatores, linkada com o seu telefone. Em caso de perda, roubo ou furto, entre em contato com a secretaria para trocar o celular exigido no login da sua conta, ou poderá perder acesso a materiais e atividades ou provas.</li>
+                <li>Professores quase nunca respondem a emails enviados pelo Outlook. Envie mensagens pelo teams ou fale com o professor durante a aula para combinar outro meio de contato.</li>
+            </ul>
+        </li>
+        <li>Diversas ferramentas pagas tem versões gratuitas para estudantes com materiais interessantes para ajudar na sua formação. Entre elas, estão Figma, Github, JetBrains, Canva e muitas outras! </li>
+    </ol>
 </div>
 {% endblock %}
