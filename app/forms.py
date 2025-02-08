@@ -92,3 +92,4 @@ class FormularioCadastro(FlaskForm):
             'required': 'true',
         }
     )
+

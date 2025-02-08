@@ -1,9 +1,10 @@
 import os
 from flask import Flask, render_template, request, url_for, flash, redirect, make_response, jsonify, Blueprint
 from app.forms import FormularioCadastro
-from app.models import Aluno, Curso, Tema, AlunoTema, Adocao
+from app.models import Aluno, Curso, Tema, AlunoTema, Adocao, SugestaoManual
 from . import db
 from sqlalchemy import func
+import random
 
 
 main = Blueprint('main', __name__)
@@ -13,6 +14,7 @@ main = Blueprint('main', __name__)
 def index():
     veteranos_count = Aluno.query.filter(Aluno.semestre > 1).count()
     calouros_count = Aluno.query.filter(Aluno.semestre == 1).count()
+    adocoes_count = Adocao.query.count()
 
     # Consultando o nome do tema e a quant de alunos interessados
     temas = db.session.query(
@@ -23,10 +25,10 @@ def index():
     .order_by(func.count(AlunoTema.aluno_id).desc()) \
     .all()
 
-    return render_template('index.html', veteranos_count=veteranos_count, calouros_count=calouros_count, temas=temas)
+    return render_template('index.html', veteranos_count=veteranos_count, calouros_count=calouros_count, temas=temas, adocoes_count=adocoes_count)
 
 
-@main.route('/manual', methods=['GET', 'POST'])
+@main.route('/manual', methods=['GET'])
 def manual():
     return render_template('manual-dos-bixos.html')
 
@@ -34,6 +36,7 @@ def manual():
 @main.route('/form', methods=['GET', 'POST'])
 def form():
     temas = Tema.query.all()
+    random.shuffle(temas)
     inscricao_concluida = False
     form = FormularioCadastro()
 
@@ -123,3 +126,41 @@ def add_adocao():
     except:
         db.session.rollback()
         return '0'
+
+
+@main.route('/conferir_whatsapp_inscricao', methods=['GET'])
+def conferir_whatsapp_inscricao():
+    whatsapp = request.args.get('whatsapp')
+    print(whatsapp)
+    tipo_aluno = request.args.get('tipo_aluno')
+    print(tipo_aluno)
+
+    inscricao = Aluno.query.filter(Aluno.whatsapp == whatsapp)
+    if tipo_aluno == 'calouro':
+        inscricao.filter(Aluno.semestre == 0)
+    else:
+        inscricao.filter(Aluno.semestre > 0)
+
+    print(inscricao)
+
+    if (len(inscricao.all()) > 0):
+        return '1'
+    else:
+        return '0'
+
+
+@main.route('/enviar_sugestao', methods=['GET', 'POST'])
+def enviar_sugestao():
+    cursos = Curso.query.all()
+
+    if request.method == 'POST':
+        sugestao = request.form.get('sugestao')
+        curso = request.form.get('curso')
+        curso = int(curso)
+        curso = Curso.query.get(curso) if curso else 0
+
+        novaSug = SugestaoManual(sugestao, curso)
+        db.session.add(novaSug)
+        db.session.commit()
+
+    return render_template('form-sugestao.html', form=form, cursos=cursos)

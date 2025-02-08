@@ -24,7 +24,7 @@ $(document).on('click', '#ver-todos-temas', function() {
 
 $(document).on('click', '#scroll-to-main', function() {
     $('body').css({'overflow': 'scroll'});
-    $('section').css({'transform': 'translateY(-100vh)'});
+    $('#index').css({'transform': 'translateY(-100vh)', 'height': 0});
 });
 
 window.addEventListener('scroll', function() {
@@ -52,7 +52,7 @@ $(document).on('keyup', '#email', function() {
 });
 
 $(document).on('click', '#btn-acessar-manual', function() {
-    hasFilledForm($('#email').val());
+    hasFilledForm($('#whatsapp-acesso-manual').val());
 });
 
 $(document).on('click', '.link-index', function() {
@@ -90,78 +90,44 @@ $(document).on('click', '.btn-tipo-aluno', function() {
     $('#form-email').slideDown(200);
 });
 
-function hasFilledForm(email) {
-    let emailValido = validacaoEmail(email);
-
-    if (emailValido) {
-        $( "#btn-acessar-manual span" ).fadeOut(200)
-        setTimeout(function() {
-            $( "#btn-acessar-manual" ).addClass("loading-btn");
-        }, 200);
-
-        const url = 'https://docs.google.com/spreadsheets/d/14HkIJpVn2TV9gcAjpiXDE0uu0kEBzevZn2L1ErgsKFY/export?format=csv&id=14HkIJpVn2TV9gcAjpiXDE0uu0kEBzevZn2L1ErgsKFY&gid=934437593';
+// FORMATAR TELEFONE
+$(document).on('input', '.telefone-input', function() {
+    var value = $(this).val().replace(/\D/g, '');
         
-        fetch(url)
-        .then(data => data.text())
-        .then(data => {
-            let calouros = csvToJson(data);
-            
-            let found = false;
-            calouros.forEach(calouro => {
-                if (calouro.email == email) found = true;
-            });
-
-            if (found) window.location.href = 'manual-dos-bixos.html';
-            else $('#modal-email-sem-cadastro').modal('show');
-        })
-        .catch(error => function() {
-            console.error(error);
-        })
-        .finally(function() {
-            $("#btn-acessar-manual").removeClass("loading-btn");
-            setTimeout(function() {
-                $("#btn-acessar-manual span").fadeIn(200);
-            }, 200)
-        });
+    if (value.length <= 2) {
+        $(this).val(`(${value}`);
+    } else if (value.length <= 6) {
+        $(this).val(`(${value.slice(0, 2)}) ${value.slice(2, 6)}`);
+    } else if (value.length <= 10) {
+        $(this).val(`(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(6, 12)}`);
     } else {
-        $('#email').siblings('span').text('Insira um endereço de email válido.');
-        $('#email').siblings('span').slideDown(100);
+        $(this).val(`(${value.slice(0, 2)}) ${value.slice(2, 3)} ${value.slice(3, 7)}-${value.slice(7, 11)}`);
     }
+});
+// Permite apagar os caracteres nao numericos
+$(document).on('keydown', '.telefone-input', function(e) {
+    var value = $(this).val().replace(/\D/g, '');
 
-}
+    if (e.keyCode === 8) $(this).val(value);
+});
 
-function csvToJson(csv) {
-    const lines = csv.split('\n');
+function hasFilledForm(whatsapp) {
+    let data = {'whatsapp': whatsapp, 'tipo_aluno': ($('#tipo-aluno').val() == 1 ? 'calouro' : 'veterano')};
+    console.log(data);
 
-    const headers = lines[0].split(',');
-
-    const resultado = lines.slice(1).map(line => {
-        const columns = line.split(',')
-        const obj = {};
-
-        headers.forEach((header, index) => {
-            header = header.replace('\r', '');
-            obj[header] = columns[index].replace(/&#44;/g, ",");
-        });
-        return obj;
+    $.ajax({
+        url: '/conferir_whatsapp_inscricao',
+        type: 'GET',
+        data: data,
+        success: function(response) {
+            if (response == 1) {
+                window.location = '/manual';
+            } else {
+                $('#modal-email-sem-cadastro').modal('show');
+            }
+        },
+        catch: function(error) {
+            console.log(error);
+        }
     });
-
-    return resultado;
-}
-
-function validacaoEmail(email) {
-    usuario = email.slice(0, email.indexOf("@"));
-    dominio = email.slice(email.indexOf("@") + 1, email.length);
-    
-    return (
-        (usuario.length >=1) &&
-        (dominio.length >=3) &&
-        (usuario.search("@")==-1) &&
-        (dominio.search("@")==-1) &&
-        (usuario.search(" ")==-1) &&
-        (dominio.search(" ")==-1) &&
-        (dominio.search(".")!=-1) &&
-        (dominio.indexOf(".") >=1)&&
-        (dominio.lastIndexOf(".") < dominio.length - 1)
-    )
 }

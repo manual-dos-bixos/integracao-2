@@ -68,7 +68,7 @@
                 </div>
                 <hr>
                 <div class="d-flex justify-content-center align-items-center">
-                    <h3 class="rounded-3 bg-primary me-3 p-3 rounded-circle fw-bold">26</h3>
+                    <h3 class="rounded-3 bg-primary me-3 p-3 rounded-circle fw-bold">{{ adocoes_count }}</h3>
                     <h3>Calouros adotados</h3>
                 </div>
                 <hr>
@@ -93,7 +93,7 @@
                 <h1 class="fun-font text-center my-3">Manual dos bixos</h1>
                 <p>Conteúdo preparado por veteranos com tudo que um calouro precisa saber.</p>
                 <p>Para acessar o manual, é necessário já ter feito o cadastro de pedido de adoção.</p>
-                <p>Use o mesmo e-mail cadastrado para acessar o Manual ou <a id="link-inscricao" href="" style="color: var(--bg-light);">faça aqui sua inscrição.</a></p>
+                <p>Use o mesmonúmero de whatsapp cadastrado para acessar o Manual ou <a href="{{ url_for('main.form') }}" style="color: var(--bg-light);">faça aqui sua inscrição.</a></p>
                 
                 <div class="text-center">
                     <h4 class="m-2">Eu sou...</h4>
@@ -105,13 +105,18 @@
                 <div style="overflow: hidden;" class="hidden" id="form-email">
                     <hr>
                     <div class="form-group col-12 col-md-8 m-auto">
-                        <label class="m-1">E-mail</label>
-                        <input type="email" name="email" id="email" class="form-control" placeholder="example.email@gmail.com">
-                        <span class="text-danger hidden"></span>
+                        <label class="m-1">Whatsapp</label>
+                        <input id="whatsapp-acesso-manual" class="form-control btn-dark text-light text-center telefone-input" placeholder="(xx) x xxxx-xxxx">
                     </div>
                     <div class="d-flex justify-content-center my-3">
                         <button id="btn-acessar-manual"><span>Acessar</span></button>
                     </div>
+                </div>
+
+                <div class="d-flex flex-column align-items-center mt-5" hidden>
+                    <hr class="border-light w-100">
+                    <p class="m-1"><strong>Veterano</strong>, nos ajude a melhorar o Manual dos Bixos por meio de sugestões!</p>
+                    <a href="{{ url_for('main.enviar_sugestao') }}" id="enviar-sugestoes-btn" class="btn btn-sm btn-light">Enviar sugestões</a>
                 </div>
 
                 <div class="d-flex justify-content-start mt-5 link-index">
@@ -173,12 +178,22 @@
         </div>
     </section> -->
 
-    <div class="justify-content-center gap-3 hidden">
-        <span class="col-5 col-md-4 bg-light p-3 d-flex align-items-center rounded-circle">
-            <img src="../static/assets/img/fatec_ra_campinas_campinas_cor.png" alt="Logo da Fatec Campinas" id="logo-fatec">
-        </span>
-        <img src="../static/assets/img/logo-atletica.jpg" alt="Logo da Atlética Guará" class="col-5 col-md-4" id="logo-atletica">
-    </div>
+    <footer class="w-100 bg-black m-0" style="border-radius: 3em 3em 0 0;">
+        <div class="d-flex gap-3 justify-content-center align-items-center p-4">
+            <div class="col-5 col-md-4 bg-light p-3 d-flex align-items-center rounded-3">
+                <img src="../static/assets/img/fatec_ra_campinas_campinas_cor.png" alt="Logo da Fatec Campinas" id="logo-fatec">
+            </div>
+            <div class="col-4 col-md-3">
+                <img src="../static/assets/img/logo-atletica.jpg" alt="Logo da Atlética Guará" class="w-100" id="logo-atletica">
+            </div>
+        </div>
+        <hr class="border-light mx-3">
+        <p class="text-secondary text-center">A.A. Guará - Fatec Campinas <span class="semestre-atual"></span></p>
+        
+        <div class="d-flex pb-4">
+            <a href="{{ url_for('main.admin') }}" class="btn btn-sm btn-dark p-2 px-5 m-auto"><i class="bi bi-gear-fill"></i></a>
+        </div>
+    </footer>
     
     <svg preserveAspectRatio="xMidYMid slice" viewBox="10 10 80 80">
         <path fill="#444444" class="out-top" d="M37-5C25.1-14.7,5.7-19.1-9.2-10-28.5,1.8-32.7,31.1-19.8,49c15.5,21.5,52.6,22,67.2,2.3C59.4,35,53.7,8.5,37-5Z"/>
@@ -209,13 +224,4 @@
 
 {% block scripts %}
     <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
-
-    {% if show_modal %}
-        <script>
-            // Exibir o modal se show_modal for True
-            $(document).ready(function() {
-                $('#myModal').modal('show');
-            });
-        </script>
-    {% endif %}
 {% endblock %}

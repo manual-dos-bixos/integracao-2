@@ -88,3 +88,20 @@ class Adocao(db.Model):
             'notificados': self.notificados,
             'curso': self.veterano.curso.sigla + ' - ' + self.veterano.curso.turno
         }
+    
+class SugestaoManual(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    created_at = db.Column(db.DateTime, default=func.now())
+    sugestao = db.Column(db.Text)
+    curso_id = db.Column(db.Integer, db.ForeignKey('curso.id'), nullable=True)
+
+    curso = db.relationship('Curso', backref='sugestao')
+
+    def __init__(self, sugestao, curso):
+        self.sugestao = sugestao
+        if curso != None:
+            self.curso = curso
+
+
+
+
