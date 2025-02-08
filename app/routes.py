@@ -69,3 +69,7 @@ def admin():
         return render_template('admin.html', veteranos=veteranos, calouros=calouros)
     else:
         return redirect('/')
+
+@main.route('/manual', methods=['GET', 'POST'])
+def manual():
+    return render_template('manual-dos-bixos.html')
