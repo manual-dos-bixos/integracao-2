@@ -26,6 +26,11 @@ def index():
     return render_template('index.html', veteranos_count=veteranos_count, calouros_count=calouros_count, temas=temas)
 
 
+@main.route('/manual', methods=['GET', 'POST'])
+def manual():
+    return render_template('manual-dos-bixos.html')
+
+
 @main.route('/form', methods=['GET', 'POST'])
 def form():
     temas = Tema.query.all()
