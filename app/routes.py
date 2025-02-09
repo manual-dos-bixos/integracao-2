@@ -5,6 +5,7 @@ from app.models import Aluno, Curso, Tema, AlunoTema, Adocao, SugestaoManual
 from . import db
 from sqlalchemy import func
 import random
+import datetime
 
 
 main = Blueprint('main', __name__)
@@ -16,6 +17,8 @@ def index():
     calouros_count = Aluno.query.filter(Aluno.semestre == 1).count()
     adocoes_count = Adocao.query.count()
 
+    semestre_atual = get_semestre_atual()
+
     # Consultando o nome do tema e a quant de alunos interessados
     temas = db.session.query(
         Tema.nome, 
@@ -25,12 +28,21 @@ def index():
     .order_by(func.count(AlunoTema.aluno_id).desc()) \
     .all()
 
-    return render_template('index.html', veteranos_count=veteranos_count, calouros_count=calouros_count, temas=temas, adocoes_count=adocoes_count)
+    return render_template(
+        'index.html',
+        veteranos_count=veteranos_count,
+        calouros_count=calouros_count,
+        temas=temas,
+        adocoes_count=adocoes_count,
+        semestre_atual=semestre_atual
+    )
 
 
 @main.route('/manual', methods=['GET'])
 def manual():
-    return render_template('manual-dos-bixos.html')
+    semestre_atual = get_semestre_atual()
+
+    return render_template('manual-dos-bixos.html', semestre_atual=semestre_atual)
 
 
 @main.route('/form', methods=['GET', 'POST'])
@@ -155,12 +167,19 @@ def enviar_sugestao():
 
     if request.method == 'POST':
         sugestao = request.form.get('sugestao')
-        curso = request.form.get('curso')
-        curso = int(curso)
-        curso = Curso.query.get(curso) if curso else 0
+        curso = int(request.form.get('curso'))
 
-        novaSug = SugestaoManual(sugestao, curso)
+        novaSug = SugestaoManual(sugestao, curso) if curso > 0 else SugestaoManual(sugestao)
         db.session.add(novaSug)
         db.session.commit()
 
     return render_template('form-sugestao.html', form=form, cursos=cursos)
+
+
+def get_semestre_atual():
+    now = datetime.datetime.now()
+    ano = now.year
+    semestre = 1 if now.month < 8 else 2
+    semestre_atual = f"{ano}-{semestre}"
+
+    return semestre_atual

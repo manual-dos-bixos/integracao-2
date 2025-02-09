@@ -97,10 +97,10 @@ class SugestaoManual(db.Model):
 
     curso = db.relationship('Curso', backref='sugestao')
 
-    def __init__(self, sugestao, curso):
+    def __init__(self, sugestao, curso_id = 0):
         self.sugestao = sugestao
-        if curso != None:
-            self.curso = curso
+        if curso_id > 0:
+            self.curso_id = curso_id
 
 
 

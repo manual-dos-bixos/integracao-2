@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Integração dos bixos 2025-1 {% endblock %}
+{% block title %} Integração dos bixos {{ semestre_atual }} {% endblock %}
 
 {% block content %}
 
@@ -14,7 +14,7 @@
 
         <div class="d-flex flex-column align-items-center z-5">
             <h1 class="text-light mt-3">Bem vindo!</h1>
-            <p class="text-light">Integração dos Bixos | 2025-1</p>
+            <p class="text-light">Integração dos Bixos | {{ semestre_atual }}</p>
             <button class="btn btn-lg btn-primary" style="position: absolute; bottom: 10%; height: 3em; width: 3em;" id="scroll-to-main">
                 <i class="bi bi-arrow-down"></i>
             </button>
@@ -28,7 +28,7 @@
                     <h1 class="fun-font text-center m-auto">
                         Integração <br class="d-md-none"><span class="fun-font fs-5 mb-3">dos</span> Bixos
                     </h1>
-                    <p class="text-center m-0">Fatec Campinas | 2025-1</p>
+                    <p class="text-center m-0">Fatec Campinas | {{ semestre_atual }}</p>
                 </div>
 
                 <div class="recepcao">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
 
-                <p class="text-center text-secondary m-4 mb-0">Fatec Campinas | 2025-1</p>
+                <p class="text-center text-secondary m-4 mb-0">Fatec Campinas | {{ semestre_atual }}</p>
             </div>
 
             <div class="col-12 col-md-10 col-lg-8 card bg-dark text-light p-3 rounded-5 m-auto mt-5">
@@ -113,7 +113,7 @@
                     </div>
                 </div>
 
-                <div class="d-flex flex-column align-items-center mt-5" hidden>
+                <div class="d-flex flex-column align-items-center mt-5">
                     <hr class="border-light w-100">
                     <p class="m-1"><strong>Veterano</strong>, nos ajude a melhorar o Manual dos Bixos por meio de sugestões!</p>
                     <a href="{{ url_for('main.enviar_sugestao') }}" id="enviar-sugestoes-btn" class="btn btn-sm btn-light">Enviar sugestões</a>
@@ -125,7 +125,7 @@
                     </button>
                 </div>
 
-                <p class="text-center text-secondary m-4 mb-0">Fatec Campinas | 2025-1</p>
+                <p class="text-center text-secondary m-4 mb-0">Fatec Campinas | {{ semestre_atual }}</p>
             </div>
         </div>
     </section>
