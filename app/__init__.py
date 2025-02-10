@@ -10,9 +10,7 @@ def create_app():
     # Configurações do app
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres.otehdyoibzmgrqufxbgm:m4BS9EOVC3NsiVzM@aws-0-sa-east-1.pooler.supabase.com:5432/postgres'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    # app.config['SECRET_KEY'] = os.environ.get('secret_key')
-    SECRET_KEY = os.urandom(32)
-    app.config['SECRET_KEY'] = SECRET_KEY
+    app.config['SECRET_KEY'] = os.environ.get('secret_key')
 
     # Inicializa o SQLAlchemy com o app
     db.init_app(app)
