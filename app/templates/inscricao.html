@@ -120,12 +120,13 @@
                             <p><small>{{ tema.descricao }}</small></p>
                         </div>
                     {% endfor %}
-                    <div class="form-group mt-4" hidden>
+                    <div class="form-group mt-4">
                         <p class="my-1">Pensou em algo que não está listado? <strong>Inclua abaixo!</strong></p>
                         <small class="mb-4 text-secondary">Aperte enter para incluir temas.</small>
                         <input type="text" class="form-control btn-dark" id="novo-tema">
                     </div>
-                    <div id="lista-temas-novos" hidden></div>
+                    <div id="lista-temas-novos"></div>
+                    {{ form.sugestoes_temas() }}
                 </div>
 
                 <div class="form-section">

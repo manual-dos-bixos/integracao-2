@@ -112,14 +112,33 @@ $(document).on('click', '.tema', function(e) {
 });
 
 $(document).on('keydown', '#novo-tema', function(e) {
-    if (e.key === 'Enter') {        
-        $('#lista-temas-novos').append(`<span class="tema-adicionado">${$(this).val()}<i class="bi bi-x-lg ms-2"></i></span>`);
+    if (e.key === 'Enter') {
+        let temaNovo = $(this).val();
+
+        $('#lista-temas-novos').append(`<span class="tema-adicionado">${temaNovo}<i class="bi bi-x-lg ms-2"></i></span>`);
         $(this).val('');
         $(this).focus();
+
+        console.log($('#sugestoes_temas'));
+
+        let sugestoes = $('#sugestoes_temas').val() ? JSON.parse($('#sugestoes_temas').val()) : [];
+        sugestoes.push(temaNovo);
+        $('#sugestoes_temas').val(JSON.stringify(sugestoes));
     }
 });
 
 $(document).on('click', '.tema-adicionado .bi-x-lg', function(e) {
+    let tema = $(this).parent().text();
+    let sugestoes = JSON.parse($('#sugestoes_temas').val());
+    console.log(sugestoes);
+    let index = sugestoes.indexOf(tema);
+    console.log(index);
+    if (index !== -1) sugestoes.splice(index, 1);
+    console.log(sugestoes);
+
+    $('#sugestoes_temas').val(JSON.stringify(sugestoes));
+    console.log($('#sugestoes_temas').val());
+
     $(this).parent().remove();
 });
 

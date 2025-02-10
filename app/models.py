@@ -38,6 +38,7 @@ class Aluno(db.Model):
             'sobre': self.whatsapp,
         }
 
+
 class Curso(db.Model):
     __tablename__ = 'curso'
     id = db.Column(db.Integer, primary_key=True)
@@ -45,11 +46,13 @@ class Curso(db.Model):
     nome = db.Column(db.String(255), nullable=False)
     turno = db.Column(db.String(10), nullable=False)
 
+
 class Tema(db.Model):
     __tablename__ = 'tema'
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(255), nullable=False)
     descricao = db.Column(db.String(255), nullable=False)
+
 
 class AlunoTema(db.Model):
     __tablename__ = 'aluno_tema'
@@ -63,6 +66,7 @@ class AlunoTema(db.Model):
     def __init__(self, aluno_id, tema_id):
         self.aluno_id = aluno_id
         self.tema_id = tema_id
+
 
 class Adocao(db.Model):
     __tablename__ = 'adocao'
@@ -88,7 +92,8 @@ class Adocao(db.Model):
             'notificados': self.notificados,
             'curso': self.veterano.curso.sigla + ' - ' + self.veterano.curso.turno
         }
-    
+
+
 class SugestaoManual(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=func.now())
@@ -103,5 +108,11 @@ class SugestaoManual(db.Model):
             self.curso_id = curso_id
 
 
+class SugestaoTema(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    created_at = db.Column(db.DateTime, default=func.now())
+    sugestao = db.Column(db.Text)
 
+    def __init__(self, sugestao, curso_id = 0):
+        self.sugestao = sugestao
 

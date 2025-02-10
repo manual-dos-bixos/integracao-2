@@ -1,15 +1,12 @@
-import os
+import os, random, datetime, json
 from flask import Flask, render_template, request, url_for, flash, redirect, make_response, jsonify, Blueprint
 from app.forms import FormularioCadastro
-from app.models import Aluno, Curso, Tema, AlunoTema, Adocao, SugestaoManual
+from app.models import Aluno, Curso, Tema, AlunoTema, Adocao, SugestaoManual, SugestaoTema
 from . import db
 from sqlalchemy import func
-import random
-import datetime
 
 
 main = Blueprint('main', __name__)
-
 
 @main.route('/')
 def index():
@@ -61,6 +58,7 @@ def form():
         curso = form.curso.data
         sobre = form.sobre.data
         temas = form.temas.data
+        sugestoes_temas = form.sugestoes_temas.data
         
         novoAluno = Aluno(nome=nome, sobrenome=sobrenome, idade=idade, whatsapp=whatsapp, semestre=semestre_atual, curso_id=curso, sobre=sobre)
         db.session.add(novoAluno)
@@ -70,8 +68,13 @@ def form():
         temas = temas.split(',')
         for tema in temas:
             interesse = AlunoTema(aluno_id=aluno_id, tema_id=tema)
-            db.session.flush()
             db.session.add(interesse)
+
+        print(form.sugestoes_temas.data + '<<<<<')
+        sugestoes_temas = json.loads(sugestoes_temas) if sugestoes_temas != '' else []
+        for sugestao in sugestoes_temas:
+            sugestao = SugestaoTema(sugestao=sugestao)
+            db.session.add(sugestao)
 
         db.session.commit()
 

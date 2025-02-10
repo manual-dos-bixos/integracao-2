@@ -11,157 +11,244 @@
     </span>
 </div>
 
-<div class="container mt-4 text-light">
+<div class="container my-4 text-light">
     <div class="card rounded-4 border-0 overflow-hidden">
         <div class="card-body bg-dark">
             <p class="lead text-white">E aí, calouro! Bem-vindo(a) à Fatec! A gente, que já tá aqui há um tempo, preparou esse manual pra te dar um apoio. Se atente nas dicas, aproveite a experiência e bora construir uma trajetória incrível juntos!</p>
+            <p class="text-white">Aqui listamos algumas coisas que podem ser muito importantes durante o curso. Mesmo que tenha acabado de entrar, não deixe de ler o conteúdo sobre estágio e TG (Trabalho de Graduação, equivalente ao TCC).</p>
+            <p class="text-light">Este manual é um projeto em desenvolvimento.</p>
+            <hr class="border-light w-100">
             <div class="d-flex flex-column align-items-center p-2">
-                <hr class="border-light w-100">
-                <p class="m-1 text-light"><strong>Veterano</strong>, nos ajude a melhorar o Manual dos Bixos por meio de sugestões!</p>
+                <p class="text-light">Nos ajude a melhorar o Manual dos Bixos por meio de sugestões!</p>
                 <a href="{{ url_for('main.enviar_sugestao') }}" id="enviar-sugestoes-btn" class="btn btn-sm btn-light">Enviar sugestões</a>
             </div>
         </div>
     </div>
-
-    <div class="card rounded-4 border-0 mb-4 mt-5 overflow-hidden">
-        <div class="card-header bg-primary text-white">
-            <h2 class="m-0">Adoção e Integração</h2>
-        </div>
-        <div class="card-body bg-dark">
-            <p class="text-white">O processo de adoção de calouros por veteranos é muito importante durante a trajetória acadêmica. Consiste na atribuição de um veterano para ajudar você, calouro, a ter alguém mais próximo para se informar, solicitar apoio e claro, fazer amigos!</p>
-        </div>
-    </div>
-
-    <div class="card rounded-4 border-0 mb-4 overflow-hidden">
-        <div class="card-header bg-primary text-white">
-            <h1 class="m-0">Dicas de sobrevivência</h1>
-        </div>
-        <div class="card-body bg-dark">
-            <p class="text-white">Aqui listamos algumas coisas que podem ser muito importantes durante o curso. Mesmo que tenha acabado de entrar, não deixe de ler o conteúdo sobre estágio e TG (Trabalho de Graduação, equivalente ao TCC).</p>
-        </div>
-    </div>
-
-    <div class="card rounded-4 border-0 mb-4 overflow-hidden">
-        <div class="card-header bg-primary text-white">
-            <h2>Os primeiros passos</h2>
-        </div>
-
-        <div class="card-header bg-dark text-white">
-            <h3 class="mt-5">SIGA</h3>
-        </div>
-
-        <div class="card-body bg-dark text-white">
-            <p>O SIGA (Sistema Integrado de Gestão Acadêmica) é um sistema
-            utilizado por todas as Fatecs onde você, o aluno, pode consultar informações sobre sua vida acadêmica. E
-            sim, o SIGA é famoso pela sua beleza e usabilidade.</p>
-        </div>
-
-        <div class="card-header bg-primary text-white">
-            <h3 class="mt-2">O dia a dia do fatecano</h3>
-        </div>
-
-        <div class="card-body bg-dark text-white">
-            <p>A Fatec Campinas oferece aulas em diferentes turnos, e claro, cada turno tem seus horários. Você pode consultar estes horários no SIGA, mas também em papéis colados nos pilares do térreo do prédio da Fatec.</p>
-            <p>Além disso, a Fatec, bem como outras instituições de ensino superior, segue um <a href="https://fateccampinas.edu.br/site/wp-content/uploads/2024/12/Calendario-Escolar-{{ semestre_atual }}o-Semestre_Fatec-Campinas.pdf" target="_blank" class="text-decoration-none">calendário acadêmico</a>, disponível através do site da Fatec Campinas.</p>
-            <p>Não se esqueça também de visitar o <a href="https://fateccampinas.edu.br/site/" target="_blank" class="text-decoration-none">site da Fatec Campinas</a> para mais informações, além de consultar o <a href="https://siga.cps.sp.gov.br/aluno/login.aspx" target="_blank" class="text-decoration-none">SIGA</a>.</p>
-        </div>
-
-        <div class="card-header bg-primary text-white">
-            <h3 class="mt-2">As salas e laboratórios da Fatec</h3>
-        </div>
-
-        <div class="card-body bg-dark text-white">
-            <p>As salas e laboratórios da Fatec são todas numeradas e, por alguma razão, as salas de aula são numeradas de forma que as de maior número estão acima das de menor número, e os laboratórios de forma que os de número menor estão acima dos de menor número. Como por exemplo, as salas de aula 11 e 13 são no 3º andar, no mesmo andar que o LAB 1 e LAB 2.</p>
-            <p>Também existem as salas especiais com nomes únicos, que é o caso de alguns laboratórios do curso de Processos Químicos e outros espaços como o miniauditório.</p>
-        </div>
-
-        <div class="card-header bg-primary text-white">
-            <h3 class="mt-4">Como ir e voltar da Fatec Campinas</h3>
-        </div>
-        <div class="card-body bg-dark text-white">
-            <ul class="list-group bg-dark">
-                <li class="list-group-item bg-dark text-light">
-                    <strong>Transporte público</strong>
-                    <p>A Fatec Campinas tem alguns pontos de ônibus em sua proximidade, com os dois mais próximos a uma
-                        distância razoável da portaria. Ambos os pontos contam com os mesmos ônibus, mas que seguem em
-                        sentidos opostos. O ponto do lado da pista próxima ao ETECAP tem os ônibus que seguem no sentido
-                        São Marcos e Sumaré/Paulínia. Já o ponto do lado oposto, do lado do aeroporto, tem os ônibus que
-                        seguem rumo ao centro de Campinas.</p>
-                    <p>As linhas municipais disponíveis são a 310, 311, 312, 313, 315, 316, 317, 318 e 381. Já as
-                        intermunicipais são a 661 e a 662.</p>
-                </li>
-                <li class="list-group-item bg-dark text-light">
-                    <strong>Veículo pessoal</strong>
-                    <p>Se você dirige e vai usar o seu veículo para vir até a Fatec, você precisa registrar seu veículo
-                        com a secretaria para poder usar o estacionamento da faculdade. É possível cadastrar seu veículo
-                        através do site da Fatec. Consulte a secretaria para mais informações.</p>
-                </li>
-                <li class="list-group-item bg-dark text-light">
-                    <strong>Fretados e vans</strong>
-                    <p>Se você não vai utilizar um veículo pessoal ou nem mesmo o transporte público, você pode procurar
-                        transporte referente à sua região. A Fatec te apresenta algumas opções de transporte particular
-                        em um painel em uma parede à direita da secretaria.</p>
-                </li>
-            </ul>
-        </div>
-
-        <div class="card-header bg-primary text-white">
-            <h2 class="mt-4">Como resolver suas pendências com a Fatec Campinas</h2>
-        </div>
-
-        <div class="card-body bg-dark text-white">
-            <p>Para resolver suas pendências acadêmicas com a secretaria, é melhor se comunicar por e-mail. A secretaria da Fatec Campinas atende via dois endereços de e-mail, sendo eles <a href="mailto:f276acad@cps.sp.gov.br" class="text-decoration-none">f276acad@cps.sp.gov.br</a> e <a href="mailto:secretaria@fateccampinas.edu.br" class="text-decoration-none">secretaria@fateccampinas.edu.br</a>. Caso necessário, você também pode ir até a secretaria da Fatec durante seu horário de funcionamento.</p>
-            <p>Através do SIGA você também pode pedir documentos. É recomendado acompanhar estes pedidos de documentos com mensagens via e-mail para a secretaria.</p>
-        </div>
-
-        <div class="card-header bg-primary text-white">
-            <h2 class="mt-4">Estágio</h2>
-        </div>
-
-        <div class="card-body bg-dark text-white">
-            <p>Também tem sobre estágio, você só pode assinar o estágio até o último dia de aula no semestre, você não pode conseguir estágio durante as férias pq não tem ninguém para assinar (diretor/coordenador/orientador)</p>
-        </div>
-
-        <div class="card-header bg-primary text-white">
-            <h2 class="mt-4">Dicas gerais</h2>
-        </div>
-
-        <div class="card-body bg-dark text-white">
-            <ol class="list-group list-group-numbered bg-dark text-light">
-                <li class="list-group-item bg-dark text-light">
-                    O Centro Paula Souza usa as ferramentas da Microsoft como Teams, OneDrive, e Outlook.
-                    <ol class="list-group list-group-numbered mt-2 bg-dark text-light">
-                        <li class="list-group-item bg-dark text-light">Quase todos os professores disponibilizam tarefas, conteúdos e avisos pelo <strong class="bg-primary">Teams</strong>.</li>
-                        <li class="list-group-item bg-dark text-light">O espaço disponibilizado no OneDrive é de apenas <strong class="bg-primary">700MB</strong>.</li>
-                        <li class="list-group-item bg-dark text-light">A Fatec Exige autenticação de dois fatores, linkada com o seu telefone. Em caso de perda, roubo ou furto, entre em contato com a secretaria para trocar o celular exigido no login da sua conta, ou poderá perder acesso a materiais e atividades ou provas.</li>
-                        <li class="list-group-item bg-dark text-light">Professores quase nunca respondem a emails enviados pelo Outlook. <strong class="bg-primary">Envie mensagens pelo Teams</strong> ou fale com o professor durante a aula para combinar outro meio de contato.</li>
-                    </ol>
-                </li>
-                <li class="list-group-item bg-dark text-light">
-                    Diversas ferramentas pagas tem versões gratuitas para estudantes com materiais interessantes para ajudar na sua formação. Entre elas, estão Figma, Github, JetBrains, Canva e muitas outras! <strong class="bg-primary">Se informe para garantir que não está perdendo nada!</strong>
-                </li>
-            </ol>
-        </div>
-
-
-    </div>
-
-    <br class="m-3">
-
-    <div class="card rounded-4 border-0 bg-dark text-white overflow-hidden">
-        <div class="card-header bg-primary text-white">
-            <h2 class="mt-4">Oportunidades de estudo extracurricular</h2>
-        </div>
-        <div class="card-body bg-dark text-white"><p>O Centro Paula Souza possui muitos programas interessantes
-            para seus alunos e docentes, incluindo matérias extracurriculares e até oportunidades para intercâmbio.
-            (Todas muito boas para seu currículo também!).</p>
-        </div>
-        <div class="card-body bg-dark text-white">
-            <h3 class="mt-4">ARInter</h3>
-            <p>A ARInter (Agência de Relações Internacionais) é um dos braços do Centro Paula Souza. Ela oferece aos alunos e aos docentes na rede do CPS oportunidades para estudar assuntos extracurriculares e em língua estrangeira de forma virtual (EaD), mas também oportunidades de intercâmbio em instituições parceiras de outros países.</p>
-            <p>Conheça mais sobre a ARInter <a href="https://arinter.cps.sp.gov.br/sobre-a-arinter/" target="_blank" class="text-decoration-none">aqui</a>, e veja os editais abertos <a href="https://arinter.cps.sp.gov.br/editais-abertos/" target="_blank" class="text-decoration-none">aqui</a>.</p>
-        </div>
-    </div>
-
 </div>
+
+<div class="accordion accordion-flush my-4" id="accordionFlushExample">
+    <!-- Adoção e Integração -->
+    <div class="accordion-item bg-dark text-light">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed bg-dark text-light border border-primary border-start-0 border-end-0" type="button" data-bs-toggle="collapse" aria-expanded="false">
+                Adoção e Integração
+            </button>
+        </h2>
+        <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <p class="text-white">O processo de adoção de calouros por veteranos é muito importante durante a trajetória acadêmica. Consiste na atribuição de um veterano para ajudar você, calouro, a ter alguém mais próximo para se informar, solicitar apoio e claro, fazer amigos!</p>
+            </div>
+        </div>
+    </div>
+    <!-- Plataformas -->
+    <div class="accordion-item bg-dark text-light">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed bg-dark text-light border border-primary border-start-0 border-end-0" type="button" data-bs-toggle="collapse" aria-expanded="false">
+                Plataformas
+            </button>
+        </h2>
+        <div id="collapse-2" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <p>O SIGA (Sistema Integrado de Gestão Acadêmica) é um sistema utilizado por todas as Fatecs onde você, o aluno, pode consultar informações sobre sua vida acadêmica, solicitar documentos e ver notas. E sim, o SIGA é famoso pela sua beleza e usabilidade. Confira em <a href="https://siga.cps.sp.gov.br/aluno/login.aspx">https://siga.cps.sp.gov.br/aluno/login.aspx</a>.</p>
+                <p>Não se esqueça também de visitar o <a href="https://fateccampinas.edu.br/site/" target="_blank" class="text-decoration-none">site da Fatec Campinas</a> para mais informações.</p>
+                <p class="mb-0">Para as aulas:</p>
+                <ul>
+                    <li>O Centro Paula Souza usa as ferramentas da Microsoft como Teams, OneDrive, e Outlook.</li>
+                    <li>Quase todos os professores disponibilizam tarefas, conteúdos e avisos pelo <strong>Teams</strong>.</li>
+                    <li>O espaço disponibilizado no OneDrive é de apenas <strong>700MB</strong>.</li>
+                    <li>A Fatec Exige autenticação de dois fatores, linkada com o seu telefone. Em caso de perda, roubo ou furto, entre em contato com a secretaria para trocar o celular exigido no login da sua conta, ou poderá perder acesso a materiais e atividades ou provas.</li>
+                </ul>
+                <p>Além disso, diversas ferramentas pagas tem versões gratuitas para estudantes com materiais interessantes para ajudar na sua formação. Entre elas, estão Figma, Github, JetBrains, Canva e muitas outras! <strong>Se informe para garantir que não está perdendo nada!</strong></p>
+            </div>
+        </div>
+    </div>
+    <!-- Horários de aula -->
+    <div class="accordion-item bg-dark text-light">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed bg-dark text-light border border-primary border-start-0 border-end-0" type="button" data-bs-toggle="collapse" aria-expanded="false">
+                Horários de aula
+            </button>
+        </h2>
+        <div id="collapse-3" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <h4>Horários de aula</h4>
+                <p>A Fatec Campinas oferece aulas em diferentes turnos, e claro, cada turno tem seus horários. Você pode consultar estes horários no SIGA, em cartazes espalhados pela Fatec ou pelos docs enviados aos representantes de sala nos grupos de whatsapp.</p>
+                <p>Além disso, a Fatec, bem como outras instituições de ensino superior, segue um <a href="../static/assets/docs/Calendario-Escolar-2025-1o-Semestre_Fatec-Campinas.pdf">calendário acadêmico</a>, disponível através do site da Fatec Campinas. Aqui você confere datas importantes como início e término de aulas, alguns feriados e datas finais de entrega.</p>
+            </div>
+        </div>
+    </div>
+    <!-- No Whatsapp -->
+    <div class="accordion-item bg-dark text-light">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed bg-dark text-light border border-primary border-start-0 border-end-0" type="button" data-bs-toggle="collapse" aria-expanded="false">
+                No Whatsapp
+            </button>
+        </h2>
+        <div id="collapse-4" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <p>A Fatec tem uma comunidade no Whatsapp onde reunimos os grupos de todas as turmas. Acesse a comunidade <a href="https://chat.whatsapp.com/L8Yp7dUHLmNCv7b2EeK5BJ">por esse link</a>.</p>
+
+            </div>
+        </div>
+    </div>
+    <!-- Salas e laboratórios -->
+    <div class="accordion-item bg-dark text-light">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed bg-dark text-light border border-primary border-start-0 border-end-0" type="button" data-bs-toggle="collapse" aria-expanded="false">
+                Salas e laboratórios
+            </button>
+        </h2>
+        <div id="collapse-5" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <p>As salas são mapeadas e numeradas (ou nomeadas) de baixo para cima. Você pode conferir o esquema de salas/labs pelo doc abaixo.
+                    <a href="../static/assets/docs/Distribuicao-salas-fatec-campinas.pdf" class="btn btn-sm btn-primary">Esquema em PDF</a>
+                    <a href="../static/assets/docs/Distribuicao-salas-fatec-campinas.jpeg" class="btn btn-sm btn-primary">Esquema em JPEG</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Transporte até a faculdade -->
+    <div class="accordion-item bg-dark text-light">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed bg-dark text-light border border-primary border-start-0 border-end-0" type="button" data-bs-toggle="collapse" aria-expanded="false">
+                Transporte até a faculdade
+            </button>
+        </h2>
+        <div id="collapse-6" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <ul>
+                    <li>
+                        <strong>Transporte público</strong>
+                        <p>A Fatec Campinas tem 2 pontos de ônibus em sua proximidade. Ambos os pontos contam com os mesmos ônibus, em sentidos opostos. O ponto do lado da pista próxima ao ETECAP tem os ônibus que seguem no sentido São Marcos e Sumaré/Paulínia. Já o ponto do lado oposto, do lado do aeroporto, seguem rumo ao centro de Campinas.</p>
+                        <p>As linhas municipais disponíveis são a 310, 311, 312, 313, 315, 316, 317, 318 e 381. As intermunicipais são a 661 e a 662.</p>
+                    </li>
+                    <li>
+                        <strong>Veículo pessoal</strong>
+                        <p>Se você dirige e vai usar o seu veículo para vir até a Fatec, você precisa registrar seu veículo com a secretaria para poder usar o estacionamento da faculdade. É possível cadastrar seu veículo através do site da Fatec. Consulte a secretaria para mais informações.</p>
+                    </li>
+                    <li>
+                        <strong>Fretados e vans</strong>
+                        <p>Se você não vai utilizar um veículo pessoal ou nem mesmo o transporte público, você pode procurar transporte referente à sua região. A Fatec te apresenta algumas opções de transporte particular em um painel em uma parede à direita da secretaria.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Contato com a Fatec -->
+    <div class="accordion-item bg-dark text-light">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed bg-dark text-light border border-primary border-start-0 border-end-0" type="button" data-bs-toggle="collapse" aria-expanded="false">
+                Contato com a Fatec
+            </button>
+        </h2>
+        <div id="collapse-7" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <p>
+                    Para resolução de problemas, você pode se comunicar por e-mail (
+                        <a href="mailto:f276acad@cps.sp.gov.br" class="text-decoration-none">f276acad@cps.sp.gov.br</a> e <a href="mailto:secretaria@fateccampinas.edu.br" class="text-decoration-none">secretaria@fateccampinas.edu.br</a>
+                        ou
+                        <a href="mailto:f276acad@cps.sp.gov.br" class="text-decoration-none">f276acad@cps.sp.gov.br</a>
+                    ), por Whatsapp (
+                        <a href="https://wa.me/551932166474">+55 19 3216-6474</a>
+                    ), por meio dos representantes da sua turma ou indo diretamente na secretaria acadêmica, no hall de entrada da Fatec.
+                </p>
+                <p>Através do SIGA você também pode pedir documentos. É recomendado acompanhar estes pedidos de documentos com mensagens via e-mail para a secretaria.</p>
+                <p>Professores quase nunca respondem a emails enviados pelo Outlook (e-mail institucional, da Microsoft). <strong>Envie mensagens pelo Teams</strong> ou fale com o professor durante a aula para combinar outro meio de contato.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Estágio -->
+    <div class="accordion-item bg-dark text-light">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed bg-dark text-light border border-primary border-start-0 border-end-0" type="button" data-bs-toggle="collapse" aria-expanded="false">
+                Estágio
+            </button>
+        </h2>
+        <div id="collapse-8" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <p>O estágio na Fatec é requisito obrigatório para a formação. Se você já trabalha/trabalhou na área, pode tentar pedir uma equivalência junto com o coordenador de estágio do seu curso.</p>
+                <p>O cumprimento da matéria de estágio só é válido a partir do 3º semestre de aulas.</p>
+                <p>Lembre de assinar os termos de estágio ANTES do último dia de aula do semestre, ou ele pode ser invalidado por não ter quem assinar seu contrato durante as férias.</p>
+            </div>
+        </div>
+    </div>
+    <!-- TG (Trabalho de Graduação) -->
+    <div class="accordion-item bg-dark text-light">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed bg-dark text-light border border-primary border-start-0 border-end-0" type="button" data-bs-toggle="collapse" aria-expanded="false">
+                TG (Trabalho de Graduação)
+            </button>
+        </h2>
+        <div id="collapse-9" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <p>O TG, assim como o estágio, é obrigatório para a formação. O currículo acadêmico traz aulas e oportunidades de encontrar apoio durante o desenvolvimento, mas não haverá tempo de aula exclusivo para o desenvolvimento do seu trabalho.</p>
+                <p>Se for possível, pense desde já a respeito do tema em que você gostaria de trabalhar. O planejamento é a chave para um trabalho bem feito!</p>
+            </div>
+        </div>
+    </div>
+    <!-- Oportunidades de estudo extracurricular -->
+    <div class="accordion-item bg-dark text-light">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed bg-dark text-light border border-primary border-start-0 border-end-0" type="button" data-bs-toggle="collapse" aria-expanded="false">
+                Oportunidades de estudo extracurricular
+            </button>
+        </h2>
+        <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <p>O Centro Paula Souza possui muitos programas interessantespara seus alunos e docentes, incluindo matérias extracurriculares e até oportunidades para intercâmbio.(Todas muito boas para seu currículo também!).</p>
+        
+                <h3 class="mt-4">ARInter</h3>
+                <p>A ARInter (Agência de Relações Internacionais) é um dos braços do Centro Paula Souza. Ela oferece aos alunos e aos docentes na rede do CPS oportunidades para estudar assuntos extracurriculares e em língua estrangeira de forma virtual (EaD), mas também oportunidades de intercâmbio em instituições parceiras de outros países.</p>
+                <p>Conheça mais sobre a ARInter <a href="https://arinter.cps.sp.gov.br/sobre-a-arinter/" target="_blank" class="text-decoration-none">aqui</a>, e veja os editais abertos <a href="https://arinter.cps.sp.gov.br/editais-abertos/" target="_blank" class="text-decoration-none">aqui</a>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="w-100 bg-black m-0" style="border-radius: 3em 3em 0 0;">
+    <div class="d-flex gap-3 justify-content-center align-items-center p-4">
+        <div class="col-5 col-md-4 bg-light p-3 d-flex align-items-center rounded-3">
+            <img src="../static/assets/img/fatec_ra_campinas_campinas_cor.png" alt="Logo da Fatec Campinas" id="logo-fatec">
+        </div>
+        <div class="col-4 col-md-3">
+            <img src="../static/assets/img/logo-atletica.jpg" alt="Logo da Atlética Guará" class="w-100" id="logo-atletica">
+        </div>
+    </div>
+    <hr class="border-light my-3">
+    <p class="text-secondary text-center">A.A. Guará - Fatec Campinas <span class="semestre-atual"></span></p>
+    
+    <div class="d-flex pb-4">
+        <a href="{{ url_for('main.admin') }}" class="btn btn-sm btn-dark p-2 px-5 m-auto d-none"><i class="bi bi-gear-fill"></i></a>
+    </div>
+</footer>
+
+{% endblock %}
+
+
+<!-- MODELO DE ACCORDION-ITEM -->
+<!-- TITLE -->
+<!-- <div class="accordion-item bg-dark text-light">
+    <h2 class="accordion-header">
+        <button class="accordion-button collapsed bg-dark text-light border border-primary border-start-0 border-end-0" type="button" data-bs-toggle="collapse" aria-expanded="false">
+            TITLE
+        </button>
+    </h2>
+    <div class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+            CONTENT
+        </div>
+    </div>
+</div> -->
+
+{% block scripts %}
+    <script>
+        // Atualizar o ID de cada collapse  dinamicamente para atualização automática mesmo com alteração na quantidade de collapse-item
+        $(document).ready(function() {
+            $('.accordion-item').each(function(i) {
+                $(this).find('.accordion-collapse').attr('id', `collapse-${i + 1}`);
+                $(this).find('.accordion-button').attr('data-bs-target', `#collapse-${i + 1}`);
+                $(this).find('.accordion-button').attr('aria-controls', `#collapse-${i + 1}`);
+            })
+        })
+    </script>
 {% endblock %}

@@ -93,3 +93,10 @@ class FormularioCadastro(FlaskForm):
         }
     )
 
+    sugestoes_temas = StringField(
+        'Sugestões de tema',
+        render_kw = {
+            'hidden': 'true'
+        }
+    )
+
