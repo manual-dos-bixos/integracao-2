@@ -98,11 +98,9 @@ def admin():
 def get_alunos_sem_adocao():
     curso_id = request.args.get('curso')
 
-    alunos = Aluno.query.filter(
-        Aluno.id.notin_(
-            db.session.query(Adocao.veterano_id)
-        )
-    )
+    adotados = db.session.query(Adocao.veterano_id).union(db.session.query(Adocao.calouro_id))
+
+    alunos = Aluno.query.filter(Aluno.id.notin_(adotados))
 
     curso = Curso.query.get(curso_id) if curso_id else None
     alunos = alunos.filter(Aluno.curso == curso) if curso != None else alunos
