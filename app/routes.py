@@ -8,6 +8,7 @@ from sqlalchemy import func
 
 main = Blueprint('main', __name__)
 
+
 @main.route('/')
 def index():
     veteranos_count = Aluno.query.filter(Aluno.semestre > 1).count()
@@ -83,28 +84,31 @@ def form():
     return render_template('inscricao.html', form=form, temas=temas, inscricao_concluida=inscricao_concluida)
 
 
-@main.route('/admin', methods=['GET'])
+@main.route('/admin', methods=['get'])
 def admin():
-    pw = os.environ.get('admin_pw')
+    pw = os.environ.get('ADMIN_PW')
+    print(pw)
     if pw != None:
         cursos = Curso.query.all()
 
         return render_template('admin.html', cursos=cursos)
     else:
-        return redirect('/')
+        cursos = Curso.query.all()
+        return render_template('admin.html', cursos=cursos)
+        return '0'
     
 
 @main.route('/get_alunos_sem_adocao', methods=['GET'])
 def get_alunos_sem_adocao():
     curso_id = request.args.get('curso')
+    curso = Curso.query.get(curso_id) if curso_id else None
 
     alunos = Aluno.query.filter(
-        Aluno.id.notin_(
-            db.session.query(Adocao.veterano_id)
-        )
+        Aluno.id.notin_(db.session.query(Adocao.veterano_id))
+        &
+        Aluno.id.notin_(db.session.query(Adocao.calouro_id))
     )
 
-    curso = Curso.query.get(curso_id) if curso_id else None
     alunos = alunos.filter(Aluno.curso == curso) if curso != None else alunos
 
     veteranos = [aluno.to_dict() for aluno in alunos.filter(Aluno.semestre > 1).all()]
@@ -146,17 +150,13 @@ def add_adocao():
 @main.route('/conferir_whatsapp_inscricao', methods=['GET'])
 def conferir_whatsapp_inscricao():
     whatsapp = request.args.get('whatsapp')
-    print(whatsapp)
     tipo_aluno = request.args.get('tipo_aluno')
-    print(tipo_aluno)
 
     inscricao = Aluno.query.filter(Aluno.whatsapp == whatsapp)
     if tipo_aluno == 'calouro':
         inscricao.filter(Aluno.semestre == 0)
     else:
         inscricao.filter(Aluno.semestre > 0)
-
-    print(inscricao)
 
     if (len(inscricao.all()) > 0):
         return '1'

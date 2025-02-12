@@ -111,6 +111,10 @@ $(document).on('keydown', '.telefone-input', function(e) {
     if (e.keyCode === 8) $(this).val(value);
 });
 
+$(document).on('click', '#acessar-admin-btn', function() {
+    $('#modal-acesso-admin').modal('show');
+});
+
 function hasFilledForm(whatsapp) {
     let data = {'whatsapp': whatsapp, 'tipo_aluno': ($('#tipo-aluno').val() == 1 ? 'calouro' : 'veterano')};
     console.log(data);
@@ -131,3 +135,5 @@ function hasFilledForm(whatsapp) {
         }
     });
 }
+
+

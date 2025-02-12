@@ -115,7 +115,6 @@ function updateTabelas() {
                         <td hidden class="sobre">${veterano.sobre}</td>
                         <td class="curso">${veterano.curso})</small></td>
                         <td class="semestre">${veterano.semestre}</td>
-                        <td class="semestre">${veterano.semestre}</td>
                     </tr>`
                 );
             });
@@ -123,11 +122,13 @@ function updateTabelas() {
             response.adocoes.forEach(adocao => {
                 $('#collapseAdocoes').find('.table tbody').append(
                     `<tr>
-                        <th class="data">${adocao.created_at}</th>
-                        <th class="calouro">${adocao.calouro}</th>
-                        <th class="veterano">${adocao.veterano}</th>
-                        <th class="curso">${adocao.curso}</th>
-                        <th class="notificados">${adocao.notificados}</th>
+                        <td class="data">${adocao.created_at}</td>
+                        <td class="calouro">${adocao.calouro}</td>
+                        <td class="calouro">${adocao.calouro_wpp}</td>
+                        <td class="veterano">${adocao.veterano}</td>
+                        <td class="veterano">${adocao.veterano_wpp}</td>
+                        <td class="curso">${adocao.curso}</td>
+                        <td class="notificados">${adocao.notificados}</td>
                     </tr>`
                 );
             });

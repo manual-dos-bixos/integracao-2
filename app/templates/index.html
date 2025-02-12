@@ -180,10 +180,10 @@
 
     <footer class="w-100 bg-black m-0" style="border-radius: 3em 3em 0 0;">
         <div class="d-flex gap-3 justify-content-center align-items-center p-4">
-            <div class="col-5 col-md-4 bg-light p-3 d-flex align-items-center rounded-3">
+            <div class="col-5 col-md-4 bg-light p-3 d-flex align-items-center rounded-3" style="max-width: 80px;">
                 <img src="../static/assets/img/fatec_ra_campinas_campinas_cor.png" alt="Logo da Fatec Campinas" id="logo-fatec">
             </div>
-            <div class="col-4 col-md-3">
+            <div class="col-4 col-md-3" style="max-width: 80px;">
                 <img src="../static/assets/img/logo-atletica.jpg" alt="Logo da Atlética Guará" class="w-100" id="logo-atletica">
             </div>
         </div>
@@ -191,7 +191,7 @@
         <p class="text-secondary text-center">A.A. Guará - Fatec Campinas <span class="semestre-atual"></span></p>
         
         <div class="d-flex pb-4">
-            <a href="{{ url_for('main.admin') }}" class="btn btn-sm btn-dark p-2 px-5 m-auto d-none"><i class="bi bi-gear-fill"></i></a>
+            <button class="btn btn-sm btn-dark p-2 px-5 m-auto" id="acessar-admin-btn"><i class="bi bi-gear-fill"></i></button>
         </div>
     </footer>
     
@@ -215,6 +215,23 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
                         <button type="button" class="btn btn-primary link-adocao">Fazer inscrição</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-acesso-admin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark rounded-4">
+                <div class="modal-body bg-dark text-light rounded-4 p-5">
+                    <form method="post">
+                        <p>Senha de adminstrador</p>
+                        <input type="password" class="form-control btn-dark">
+                        <div class="d-flex justify-content-between mt-5">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Acessar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
