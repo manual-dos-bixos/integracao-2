@@ -114,6 +114,28 @@ $(document).on('keydown', '.telefone-input', function(e) {
 $(document).on('click', '#acessar-admin-btn', function() {
     $('#modal-acesso-admin').modal('show');
 });
+$(document).on('submit', '#form-acessar-admin', function(e) {
+    e.preventDefault();
+    $('.error').slideUp(100, function() {
+        $('.error').remove();
+    });
+
+    $.ajax({
+        url: '/admin',
+        type: 'POST',
+        data: {'admin_pw_input': $('#admin-pw-input').val()},
+        success: function(response) {
+            if (response == 0) {
+                $('#admin-pw-input').after('<span class="text-danger error" hidden>Senha inválida.</span>');
+                $('.error').slideDown();
+            }
+        },
+        catch: function(error) {
+            console.log(error);
+        }
+    });
+    $('#modal-acesso-admin').modal('show');
+});
 
 function hasFilledForm(whatsapp) {
     let data = {'whatsapp': whatsapp, 'tipo_aluno': ($('#tipo-aluno').val() == 1 ? 'calouro' : 'veterano')};

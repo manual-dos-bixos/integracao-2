@@ -86,15 +86,18 @@ def form():
 @main.route('/admin', methods=['get'])
 def admin():
     admin_pw = os.getenv('ADMIN_PW')
-    print(admin_pw)
-    if admin_pw != None:
-        cursos = Curso.query.all()
 
-        return render_template('admin.html', cursos=cursos)
+    if request.method == 'GET':
+        return redirect('/index')
     else:
-        # cursos = Curso.query.all()
-        # return render_template('admin.html', cursos=cursos)
-        return '0'
+        pw_input = request.args.get('admin_pw_input')
+        
+        if admin_pw == pw_input:
+            cursos = Curso.query.all()
+
+            return render_template('admin.html', cursos=cursos)
+        else:
+            return '0'
     
 
 @main.route('/get_alunos_sem_adocao', methods=['GET'])
