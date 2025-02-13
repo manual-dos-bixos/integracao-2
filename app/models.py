@@ -87,12 +87,14 @@ class Adocao(db.Model):
         return {
             'id': self.id,
             'created_at': self.created_at.strftime("%d/%m - %H:%M"),
-            'calouro': self.calouro.nome + self.calouro.sobrenome,
+            'calouro': self.calouro.nome + ' ' + self.calouro.sobrenome,
+            'calouro_sobre': self.calouro.sobre,
             'calouro_wpp': self.calouro.whatsapp,
-            'veterano': self.veterano.nome + self.veterano.sobrenome,
+            'veterano': self.veterano.nome + ' ' + self.veterano.sobrenome,
+            'veterano_sobre': self.veterano.sobre,
             'veterano_wpp': self.veterano.whatsapp,
             'notificados': self.notificados,
-            'curso': self.veterano.curso.sigla + ' - ' + self.veterano.curso.turno
+            'curso': self.veterano.curso.sigla + ' ' + self.veterano.curso.turno
         }
 
 

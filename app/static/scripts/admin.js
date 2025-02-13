@@ -13,7 +13,7 @@ $(document).on('change', '#select-curso-id', function() {
     });
 });
 
-$('#form-criar-adocao').on('submit', function(e) {
+$(document).on('submit', '#form-criar-adocao', function() {
     e.preventDefault();
     $.ajax({
         url: '/add_adocao',
@@ -67,8 +67,17 @@ function carregarAlunos(curso = null) {
                 $('#select-calouro-id').append(`<option value="${aluno.id}" data-curso="${aluno.curso}">${aluno.nome} ${aluno.sobrenome}</option>`)
             });
 
-            $('.count-veteranos').text(response.veteranos.length);
-            $('.count-calouros').text(response.calouros.length);
+            $('#quant-alunos tbody').html('');
+            Object.values(response.quant_alunos).forEach(curso => {
+                $('#quant-alunos tbody').append(
+                    `<tr>
+                        <td class="col-3">${curso.nome}</td>
+                        <td class="col-3 text-center">${curso.vet}</td>
+                        <td class="col-3 text-center">${curso.cal}</td>
+                        <td class="col-3 text-center"><i class="bi ${(curso.vet > 0 && curso.cal > 0) ? 'bi-check-square-fill text-success' : 'bi-square text-danger'}"></i></td>
+                    </tr>`
+                );
+            })
 
             updateTabelas();
         },
@@ -122,13 +131,13 @@ function updateTabelas() {
             response.adocoes.forEach(adocao => {
                 $('#collapseAdocoes').find('.table tbody').append(
                     `<tr>
-                        <td class="data">${adocao.created_at}</td>
-                        <td class="calouro">${adocao.calouro}</td>
-                        <td class="calouro">${adocao.calouro_wpp}</td>
-                        <td class="veterano">${adocao.veterano}</td>
-                        <td class="veterano">${adocao.veterano_wpp}</td>
-                        <td class="curso">${adocao.curso}</td>
-                        <td class="notificados">${adocao.notificados}</td>
+                        <td class="data">${adocao.id}</td>
+                        <td class="curso text-center">${adocao.curso}</td>
+                        <td class="notificados text-center fs-3"><i class="bi ${adocao.notificados == true ? 'bi-check-square-fill text-success' : 'bi-square text-danger'}"></i></td>
+                        <td class="calouro">${adocao.calouro}<br><small class="text-secondary">${adocao.calouro_sobre}</small></td>
+                        <td class="calouro_wpp">${adocao.calouro_wpp}</td>
+                        <td class="veterano">${adocao.veterano}<br><small class="text-secondary">${adocao.veterano_sobre}</small></td>
+                        <td class="veterano_wpp">${adocao.veterano_wpp}</td>
                     </tr>`
                 );
             });

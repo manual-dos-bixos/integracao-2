@@ -71,7 +71,6 @@ def form():
             interesse = AlunoTema(aluno_id=aluno_id, tema_id=tema)
             db.session.add(interesse)
 
-        print(form.sugestoes_temas.data + '<<<<<')
         sugestoes_temas = json.loads(sugestoes_temas) if sugestoes_temas != '' else []
         for sugestao in sugestoes_temas:
             sugestao = SugestaoTema(sugestao=sugestao)
@@ -86,15 +85,15 @@ def form():
 
 @main.route('/admin', methods=['get'])
 def admin():
-    pw = os.environ.get('ADMIN_PW')
-    print(pw)
-    if pw != None:
+    admin_pw = os.getenv('ADMIN_PW')
+    print(admin_pw)
+    if admin_pw != None:
         cursos = Curso.query.all()
 
         return render_template('admin.html', cursos=cursos)
     else:
-        cursos = Curso.query.all()
-        return render_template('admin.html', cursos=cursos)
+        # cursos = Curso.query.all()
+        # return render_template('admin.html', cursos=cursos)
         return '0'
     
 
@@ -109,17 +108,29 @@ def get_alunos_sem_adocao():
         Aluno.id.notin_(db.session.query(Adocao.calouro_id))
     )
 
+    cursos = Curso.query.all()
+    quant_alunos = {
+        curso.id: {
+            'nome': curso.sigla + ' - ' + curso.turno,
+            'vet': 0,
+            'cal': 0
+            } for curso in cursos
+        }
+    for aluno in alunos.all():
+        tipo = 'vet' if aluno.semestre > 1 else 'cal'
+        quant_alunos[aluno.curso.id][tipo] += 1
+
     alunos = alunos.filter(Aluno.curso == curso) if curso != None else alunos
 
     veteranos = [aluno.to_dict() for aluno in alunos.filter(Aluno.semestre > 1).all()]
     calouros = [aluno.to_dict() for aluno in alunos.filter(Aluno.semestre == 1).all()]
 
-    return jsonify({'veteranos': veteranos, 'calouros': calouros})
+    return jsonify({'veteranos': veteranos, 'calouros': calouros, 'quant_alunos': quant_alunos})
 
 
 @main.route('/get_tabelas', methods=['GET'])
 def get_tabelas():
-    adocoes = Adocao.query.all()
+    adocoes = Adocao.query.order_by(Adocao.created_at).all()
     adocoes = [adocao.to_dict() for adocao in adocoes]
 
     veteranos = Aluno.query.filter(Aluno.semestre > 1).all()

@@ -6,39 +6,52 @@
 
     <div class="p-2 py-4">
 
-        <div class="bg-black p-4 m-4 rounded-5">
-            <form action="/add_adocao" method="post" id="form-criar-adocao">
-                <h1 class="text-light">Nova adoção</h1>
+        <div class="row m-4">
+            <div class="p-2 col-12 col-md-6">
+                <div class="bg-black p-4 rounded-5">
+                    <form action="/add_adocao" method="post" id="form-criar-adocao">
+                        <h1 class="text-light">Nova adoção</h1>
 
-                <div class="form-group my-3">
-                    <label for="select-curso-id" class="form-label text-light">Curso</label>
-                    <select class="form-select bg-dark border-dark text-light" name="select-curso-id" id="select-curso-id" required>
-                        <option value="">Selecione</option>
-                        {% for curso in cursos %}
-                            <option value="{{ curso.id }}">{{ curso.sigla }} ({{ curso.turno | lower }})</option>
-                        {% endfor %}
-                    </select>
+                        <div class="form-group my-3">
+                            <label for="select-curso-id" class="form-label text-light">Curso</label>
+                            <select class="form-select bg-dark border-dark text-light" name="select-curso-id" id="select-curso-id" required>
+                                <option value="">Selecione</option>
+                                {% for curso in cursos %}
+                                    <option value="{{ curso.id }}">{{ curso.sigla }} ({{ curso.turno | lower }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group my-3">
+                            <label for="select-calouro-id" class="form-label text-light">Calouro</label>
+                            <select class="form-select bg-dark border-dark text-light" name="select-calouro-id" id="select-calouro-id" required disabled>
+                                <option value="">Selecione</option>
+                            </select>
+                        </div>
+                        <div class="form-group my-3">
+                            <label for="select-veterano-id" class="form-label text-light">Veterano</label>
+                            <select class="form-select bg-dark border-dark text-light" name="select-veterano-id" id="select-veterano-id" required disabled>
+                                <option value="">Selecione</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary my-4 m-auto d-block" type="submit">Confirmar</button>
+                    </form>
                 </div>
-                <div class="form-group my-3">
-                    <label for="select-calouro-id" class="form-label text-light">Calouro</label>
-                    <select class="form-select bg-dark border-dark text-light" name="select-calouro-id" id="select-calouro-id" required disabled>
-                        <option value="">Selecione</option>
-                    </select>
-                </div>
-                <div class="form-group my-3">
-                    <label for="select-veterano-id" class="form-label text-light">Veterano</label>
-                    <select class="form-select bg-dark border-dark text-light" name="select-veterano-id" id="select-veterano-id" required disabled>
-                        <option value="">Selecione</option>
-                    </select>
-                </div>
-                <button class="btn btn-primary my-4 m-auto d-block" type="submit">Confirmar</button>
-            </form>
-        </div>
+            </div>
 
-        <div class="card rounded-4 p-3 m-3 bg-dark text-light">
-            <h4>Alunos sem adoção</h4>
-            <p class="m-1"><span class="count-veteranos"></span> Veterano(s)</p>
-            <p class="m-1"><span class="count-calouros"></span> Calouro(s)</p>
+            <div class="p-2 col-12 col-md-6">
+                <div class="card rounded-4 p-3 bg-dark text-light d-flex justify-content-center">
+                    <h4>Alunos sem adoção</h4>
+                    <table id="quant-alunos" class="table table-striped table-dark text-nowrap">
+                        <thead>
+                            <th>Curso</th>
+                            <th class="text-center">Veteranos</th>
+                            <th class="text-center">Calouros</th>
+                            <th class="text-center">Tem duplas</th>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
         <p class="d-flex justify-content-center m-0">
@@ -50,13 +63,13 @@
             <div class="card card-body p-0 bg-dark overflow-x-scroll">
                 <table class="table table-dark table-striped m-0">
                     <thead>
-                        <th class="data">Data</th>
+                        <th class="id">ID</th>
+                        <th class="curso">Curso</th>
+                        <th class="notificados">Notificados</th>
                         <th class="calouro">Calouro</th>
                         <th class="calouro_wpp">Whatsapp</th>
                         <th class="veterano">Veterano</th>
                         <th class="veterano_wpp">Whatsapp</th>
-                        <th class="curso">Curso</th>
-                        <th class="notificados">Notificados</th>
                     </thead>
                     <tbody>
                     </tbody>
