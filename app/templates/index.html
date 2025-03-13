@@ -188,11 +188,12 @@
             </div>
         </div>
         <hr class="border-light mx-3">
-        <p class="text-secondary text-center">A.A. Guará - Fatec Campinas <span class="semestre-atual"></span></p>
+        <p class="text-secondary text-center">
+            A.A. Guará - Fatec Campinas <span class="semestre-atual"></span>
+            <a class="btn btn-sm btn-black" id="acessar-admin-btn" href="{{ url_for('main.admin') }}"><i class="bi bi-gear-fill"></i></a>
+        </p>
         
-        <div class="d-flex pb-4">
-            <button class="btn btn-sm btn-dark p-2 px-5 m-auto" id="acessar-admin-btn"><i class="bi bi-gear-fill"></i></button>
-        </div>
+        <div class="d-flex pb-4"></div>
     </footer>
     
     <svg preserveAspectRatio="xMidYMid slice" viewBox="10 10 80 80">
