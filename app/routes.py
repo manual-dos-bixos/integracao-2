@@ -1,5 +1,7 @@
 import os, random, datetime, json
-from flask import Flask, render_template, request, url_for, flash, redirect, make_response, jsonify, Blueprint
+import app
+from flask import Flask, render_template, request, url_for, flash, redirect, make_response, jsonify, Blueprint, current_app
+import app.config
 from app.forms import FormularioCadastro
 from app.models import Aluno, Curso, Tema, AlunoTema, Adocao, SugestaoManual, SugestaoTema
 from . import db
@@ -83,20 +85,20 @@ def form():
     return render_template('inscricao.html', form=form, temas=temas, inscricao_concluida=inscricao_concluida)
 
 
-@main.route('/admin', methods=['get'])
+@main.route('/admin', methods=['GET', 'POST'])
 def admin():
-    admin_pw = os.getenv('ADMIN_PW')
-
+    admin_pw = current_app.config['ADMIN_PW']
+    
     if request.method == 'GET':
-        return redirect('/')
+        return render_template('admin.html', cursos=[], acesso=0)
     else:
-        pw_input = request.args.get('admin_pw_input')
+        pw_input = request.form['admin_pw_input']
         cursos = Curso.query.all()
         
-        if admin_pw == pw_input:
+        if admin_pw == pw_input and admin_pw != None:
             return render_template('admin.html', cursos=cursos, acesso=1)
         else:
-            return render_template('admin.html', cursos=cursos, acesso=0)
+            return render_template('admin.html', cursos=cursos, acesso=-1)
     
 
 @main.route('/get_alunos_sem_adocao', methods=['GET'])
@@ -147,7 +149,9 @@ def get_tabelas():
 @main.route('/add_adocao', methods=['POST'])
 def add_adocao():
     calouro = request.form.get('select-calouro-id')
+    print(calouro)
     veterano = request.form.get('select-veterano-id')
+    print(veterano)
 
     novaAdocao = Adocao(calouro_id=calouro, veterano_id=veterano)
 

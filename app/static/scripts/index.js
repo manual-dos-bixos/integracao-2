@@ -114,20 +114,6 @@ $(document).on('keydown', '.telefone-input', function(e) {
 $(document).on('click', '#acessar-admin-btn', function() {
     $('#modal-acesso-admin').modal('show');
 });
-$(document).on('submit', '#form-acessar-admin', function(e) {
-    e.preventDefault();
-
-    fetch('/admin', {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        method: "POST",
-        body: {'admin_pw_input': $('#admin-pw-input').val()}
-    }).catch(function(error) {
-        console.log(error);
-    });
-});
 
 function hasFilledForm(whatsapp) {
     let data = {'whatsapp': whatsapp, 'tipo_aluno': ($('#tipo-aluno').val() == 1 ? 'calouro' : 'veterano')};

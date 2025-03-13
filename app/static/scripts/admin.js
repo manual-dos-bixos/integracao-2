@@ -13,8 +13,9 @@ $(document).on('change', '#select-curso-id', function() {
     });
 });
 
-$(document).on('submit', '#form-criar-adocao', function() {
+$(document).on('submit', '#form-criar-adocao', function(e) {
     e.preventDefault();
+
     $.ajax({
         url: '/add_adocao',
         type: 'POST',

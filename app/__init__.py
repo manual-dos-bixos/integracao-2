@@ -2,16 +2,18 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+from dotenv import load_dotenv
+load_dotenv()
+
 db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__)
 
-    # Configurações do app
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres.otehdyoibzmgrqufxbgm:m4BS9EOVC3NsiVzM@aws-0-sa-east-1.pooler.supabase.com:5432/postgres'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
-    print(app.config['SECRET_KEY'])
+    app.config['ADMIN_PW'] = os.environ.get('ADMIN_PW')
 
     # Inicializa o SQLAlchemy com o app
     db.init_app(app)

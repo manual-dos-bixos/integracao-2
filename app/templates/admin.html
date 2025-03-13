@@ -9,7 +9,7 @@
             <div class="row m-4">
                 <div class="p-2 col-12 col-md-6">
                     <div class="bg-black p-4 rounded-5">
-                        <form action="/add_adocao" method="post" id="form-criar-adocao">
+                        <form action="/add_adocao" method="get" id="form-criar-adocao">
                             <h1 class="text-light">Nova adoção</h1>
 
                             <div class="form-group my-3">
@@ -146,8 +146,20 @@
             </div>
         </div>
     {% else %}
-        <div class="d-flex justify-content-center align-items-center w-100 h-100">
-            <p class="text-danger">Acesso negado.</p>
+        <div class="d-flex justify-content-center align-items-center w-100 h-100 py-5">
+            <div class="bg-dark text-light rounded-4 p-5">
+                <form method="post" id="form-acessar-admin" action="{{ url_for('main.admin') }}">
+                    <p>Senha de adminstrador</p>
+                    <input type="password" class="form-control btn-dark" id="admin_pw_input" name="admin_pw_input">
+                    {% if acesso == -1 %}
+                        <span class="text-danger">Senha incorreta.</span>
+                    {% endif %}
+                    <div class="d-flex justify-content-between mt-5">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Acessar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     {% endif %}
 {% endblock %}
