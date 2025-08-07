@@ -6,12 +6,12 @@ import os
 load_dotenv()
 
 # Fetch variables
-USER = os.getenv("USER")
-PASSWORD = os.getenv("PASSWORD")
+USER = os.getenv("user")
+PASSWORD = os.getenv("password")
 
-HOST = os.getenv("HOST")
-PORT = os.getenv("PORT")
-DBNAME = os.getenv("DBNAME")
+HOST = os.getenv("host")
+PORT = os.getenv("port")
+DBNAME = os.getenv("dbname")
 
 # Connect to the database
 try:
